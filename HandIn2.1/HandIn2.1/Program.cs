@@ -24,6 +24,7 @@ namespace HandIn2._1
             Display display1 = new Display(person1);
             foreach (var alts in person1.AltAddress.AltAddressList)
             {
+                Console.WriteLine(alts.ToString());
                 System.Console.WriteLine(alts.Type + ": " + alts.StreetName + " " + alts.HouseNumber + " " + alts.City + " " + alts.ZipCode + "\n");
             }
             

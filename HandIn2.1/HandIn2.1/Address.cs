@@ -12,6 +12,8 @@
             Type = type;
         }
 
+
+
         public string StreetName { get; set; }
         public int HouseNumber { get; set; }
         public int ZipCode { get; set; }
