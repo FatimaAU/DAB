@@ -1,0 +1,7 @@
+D:\Visual Studio\4. semester\DAB\Aflevering2\HandIn2.1\HandIn2.1\bin\Debug\HandIn2.1.exe.config
+D:\Visual Studio\4. semester\DAB\Aflevering2\HandIn2.1\HandIn2.1\bin\Debug\HandIn2.1.exe
+D:\Visual Studio\4. semester\DAB\Aflevering2\HandIn2.1\HandIn2.1\bin\Debug\HandIn2.1.pdb
+D:\Visual Studio\4. semester\DAB\Aflevering2\HandIn2.1\HandIn2.1\obj\Debug\HandIn2.1.csprojResolveAssemblyReference.cache
+D:\Visual Studio\4. semester\DAB\Aflevering2\HandIn2.1\HandIn2.1\obj\Debug\HandIn2.1.csproj.CoreCompileInputs.cache
+D:\Visual Studio\4. semester\DAB\Aflevering2\HandIn2.1\HandIn2.1\obj\Debug\HandIn2.1.exe
+D:\Visual Studio\4. semester\DAB\Aflevering2\HandIn2.1\HandIn2.1\obj\Debug\HandIn2.1.pdb
