@@ -13,32 +13,55 @@ namespace HandIn2._1
         public Display(Person person)
         {
            Console.WriteLine("Name: " + person.FirstName + " " + person.MiddleName + " " + person.LastName);
-            Console.WriteLine("Type: " + person.Type.Types);
             Console.WriteLine("Email: " + person.Contact.Email);
-            Console.WriteLine(person.Contact.Telephone.Info + ":");
-            Console.WriteLine("\tPhone number: " + person.Contact.Telephone.Number);
-            Console.WriteLine("\tTelecompany: " + person.Contact.Telephone.TeleCompany + "\n");            
-            //Console.WriteLine(person..Address.Type + ": " + person.Address.Address.StreetName + " " + person.Address.Address.HouseNumber + " " + person.Address.Address.City + " " + person.Address.Address.ZipCode);
-            Console.WriteLine(person.Contact.MainAddress.Address.Type + ": " 
-                              + person.Contact.MainAddress.Address.StreetName + " " 
-                              + person.Contact.MainAddress.Address.HouseNumber + " ");
-
-
-            switch (person.Contact.MainAddress.Address.Country)
+            foreach (var alts in person.Contact.Telephone)
             {
-                case "Danmark":
-                    Console.WriteLine("DK" + " " + person.Contact.MainAddress.Address.ZipCode + " " + person.Contact.MainAddress.Address.City);
-                    break;
-
-                case "England":
-                    Console.WriteLine("UK" + " " + person.Contact.MainAddress.Address.ZipCode + ", ");
-                    break;
-
-                case "Faroe Islands":
-                    Console.WriteLine("FO" + " " + person.Contact.MainAddress.Address.ZipCode + " " + person.Contact.MainAddress.Address.City);
-                    break;
+                Console.WriteLine(alts.Info + ":");
+                Console.WriteLine("\tPhone number: " + alts.Number);
+                Console.WriteLine("\tTelecompany: " + alts.TeleCompany + "\n");
             }
+           
+            Console.Write(person.Contact.MainAddress.Address.Type + ": "
+                                                                  + person.Contact.MainAddress.Address.StreetName + " "
+                                                                  + person.Contact.MainAddress.Address.HouseNumber + " ");
 
+                switch (person.Contact.MainAddress.Address.Country)
+                {
+                    case "Danmark":
+                        Console.WriteLine("DK" + " " + person.Contact.MainAddress.Address.City.ZipCode + " " + person.Contact.MainAddress.Address.City.CityName);
+                        break;
+
+                    case "England":
+                        Console.WriteLine(person.Contact.MainAddress.Address.City.CityName + " " + person.Contact.MainAddress.Address.City.ZipCode + ", " + "UK");
+                        break;
+
+                    case "Faroe Islands":
+                        Console.WriteLine("FO" + " " + person.Contact.MainAddress.Address.City.ZipCode + " " + person.Contact.MainAddress.Address.City.CityName);
+                        break;
+                }
+
+            foreach (var alts in person.Contact.Alternatives)
+            {
+                Console.Write(alts.AltAddressList.Type + ": "
+                                        + alts.AltAddressList.StreetName + " "
+                                        + alts.AltAddressList.HouseNumber + " ");
+
+                switch (alts.AltAddressList.Country)
+                {
+                    case "Danmark":
+                        Console.WriteLine("DK" + " " + alts.AltAddressList.City.ZipCode + " " + alts.AltAddressList.City.CityName);
+                        break;
+
+                    case "England":
+                        Console.WriteLine(alts.AltAddressList.City.CityName + " " + alts.AltAddressList.City.ZipCode + ", " + "UK");
+                        break;
+
+                    case "Faroe Islands":
+                        Console.WriteLine("FO" + " " + alts.AltAddressList.City.ZipCode + " " + alts.AltAddressList.City.CityName);
+                        break;
+                }
+            }
+            Console.WriteLine("\n");
         }
     }
 }

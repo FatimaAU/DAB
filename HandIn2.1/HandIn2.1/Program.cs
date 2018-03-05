@@ -11,24 +11,32 @@ namespace HandIn2._1
         static void Main(string[] args)
         {
 
-            Type male = new Type("Male");
             Telephone telephone1 = new Telephone(21351791, "Private telephone", "Telia");
+            Telephone telephone2 = new Telephone(14113673, "Work telephone", "Oister");
+            Telephone telephone3 = new Telephone(21351791, "Mobile telephone", "3");
+            List<Telephone> telephones = new List<Telephone>();
+            telephones.Add(telephone1);
+            telephones.Add(telephone2);
+            telephones.Add(telephone3);
+
             City aarhusV = new City("Aarhus V", "8210");
             City blacktown = new City("Blacktown", "CF3 7QG");
-            Address address1 = new Address("HomeStreet", 39, aarhusV, "Private Address", "Danmark");
+            City Kirkjubøur = new City("Kirkjubøur", "175");
+            Address address1 = new Address("Kalender", 39, aarhusV, "Private Address", "Danmark");
             Address address2 = new Address("Southend Avenue", 70, blacktown, "Work Address", "England");
+            Address address3 = new Address("Gamlivegur", 16, Kirkjubøur, "Summer House", "Feroe Island");
             MainAddress mainAddress = new MainAddress(address1);
-            AlternativeAddress altAddress = new AlternativeAddress(address2);
-            Contact contact1 = new Contact("Bob@hotmail.com", telephone1, mainAddress, altAddress);
+            List<AlternativeAddress> altAddresses = new List<AlternativeAddress>();
+            AlternativeAddress altAddress1 = new AlternativeAddress(address2);
+            AlternativeAddress altAddress2 = new AlternativeAddress(address3);
+            altAddresses.Add(altAddress1);
+            altAddresses.Add(altAddress2);
 
-            Person person1 = new Person("Bob", "Martin", "Jensen", male, contact1);
+            Contact contact1 = new Contact("Bob@hotmail.com", telephones, mainAddress, altAddresses);
+
+            Person person1 = new Person("Bob", "Martin", "Jensen", contact1);
 
             Display display1 = new Display(person1);
-            foreach (var alts in person1.Contact.Alternatives.AltAddressList)
-            {
-                Console.WriteLine(alts.ToString());
-                System.Console.WriteLine(alts.Type + ": " + alts.StreetName + " " + alts.HouseNumber + " " + alts.City.CityName + " " + alts.City.ZipCode + "\n");
-            }
 
         }
     }

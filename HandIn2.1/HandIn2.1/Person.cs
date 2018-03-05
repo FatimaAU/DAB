@@ -2,13 +2,12 @@
 {
     class Person
     {
-        public Person(string fName, string mName, string lName, Type type, 
+        public Person(string fName, string mName, string lName, 
             Contact contactInfo)
         {
             FirstName = fName;
             MiddleName = mName;
             LastName = lName;
-            Type = type;
             Contact = contactInfo;
         }
         public string FirstName { get; set; }

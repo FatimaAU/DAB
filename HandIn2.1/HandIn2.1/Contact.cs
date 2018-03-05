@@ -1,8 +1,10 @@
-﻿namespace HandIn2._1
+﻿using System.Collections.Generic;
+
+namespace HandIn2._1
 {
     class Contact
     {
-        public Contact(string email, Telephone telephone, MainAddress mainAddress, AlternativeAddress alts)
+        public Contact(string email, List<Telephone> telephone, MainAddress mainAddress, List<AlternativeAddress> alts)
         {
             Email = email;
             Telephone = telephone;
@@ -11,8 +13,8 @@
 
         }
         public string Email { get; set; }
-        public Telephone Telephone { get; set; }
+        public List<Telephone> Telephone = new List<Telephone>();
         public MainAddress MainAddress { get; set; }
-        public AlternativeAddress Alternatives { get; set; }
+        public List<AlternativeAddress> Alternatives = new List<AlternativeAddress>();
     }
 }
