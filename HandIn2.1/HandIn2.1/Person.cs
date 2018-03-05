@@ -13,7 +13,6 @@
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
-        public Type Type { get; set; }
         public Contact Contact { get; set; }
     }
 }
