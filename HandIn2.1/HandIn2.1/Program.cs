@@ -24,7 +24,7 @@ namespace HandIn2._1
             City Kirkjubøur = new City("Kirkjubøur", "175");
             Address address1 = new Address("Kalendervej", 39, aarhusV, "Private Address", "Danmark");
             Address address2 = new Address("Southend Avenue", 70, blacktown, "Work Address", "England");
-            Address address3 = new Address("Gamlivegur", 16, Kirkjubøur, "Summer House", "Feroe Island");
+            Address address3 = new Address("Gamlivegur", 16, Kirkjubøur, "Summer House", "Faroe Islands");
             MainAddress mainAddress = new MainAddress(address1);
             List<AlternativeAddress> altAddresses = new List<AlternativeAddress>();
             AlternativeAddress altAddress1 = new AlternativeAddress(address2);
@@ -35,8 +35,14 @@ namespace HandIn2._1
             Contact contact1 = new Contact("Bob@hotmail.com", telephones, mainAddress, altAddresses);
 
             Person person1 = new Person("Bob", "Martin", "Jensen", contact1);
+            List<Person> personList = new List<Person>();
+            personList.Add(person1);
+            Kartotek myKartotek = new Kartotek(personList);
 
-            Display display1 = new Display(person1);
+            foreach (var alts in myKartotek.PersonList)
+            {
+                Display display1 = new Display(alts);
+            }
 
         }
     }

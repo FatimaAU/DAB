@@ -4,9 +4,9 @@ namespace HandIn2._1
 {
     class Kartotek
     {
-        public Kartotek(Person person = null)
+        public Kartotek(List<Person> person)
         {
-            PersonList.Add(person);
+            PersonList = person;
         }
 
         public List<Person> PersonList = new List<Person>();

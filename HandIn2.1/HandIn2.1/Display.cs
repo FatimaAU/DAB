@@ -12,6 +12,7 @@ namespace HandIn2._1
 
         public Display(Person person)
         {
+
            Console.WriteLine("Name: " + person.FirstName + " " + person.MiddleName + " " + person.LastName);
             Console.WriteLine("Email: " + person.Contact.Email);
             foreach (var alts in person.Contact.Telephone)
