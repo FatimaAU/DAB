@@ -2,13 +2,13 @@
 {
     class City
     {
-        public City(string name, int zipcode)
+        public City(string name, string zipcode)
         {
             CityName = name;
             ZipCode = zipcode;
         }
 
         public string CityName { get; set; }
-        public int ZipCode { get; set; }
+        public string ZipCode { get; set; }
     }
 }
