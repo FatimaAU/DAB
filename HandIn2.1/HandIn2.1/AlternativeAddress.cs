@@ -7,7 +7,6 @@ namespace HandIn2._1
     {
         public AlternativeAddress(Address address = null)
         {
-           // List<Address> AltAddressList = new List<Address>();
             AltAddressList.Add(address);
         }
 

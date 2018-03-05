@@ -1,23 +1,23 @@
 ﻿namespace HandIn2._1
 {
-    class Address
+    partial class Address
     {
 
-        public Address(string streetName, int houseNumber, int zipCode, string city, string type)
+        public Address(string streetName, int houseNumber, City city, string type, string country)
         {
             StreetName = streetName;
             HouseNumber = houseNumber;
-            ZipCode = zipCode;
             City = city;
             Type = type;
+            Country = country;
         }
 
 
 
         public string StreetName { get; set; }
         public int HouseNumber { get; set; }
-        public int ZipCode { get; set; }
-        public string City { get; set; }
+        public City City { get; set; }
         public string Type { get; set; }
+        public string Country { get; set; }
     }
 }
