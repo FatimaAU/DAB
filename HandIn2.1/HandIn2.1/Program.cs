@@ -14,10 +14,13 @@ namespace HandIn2._1
             Telephone telephone1 = new Telephone(21351791, "Private telephone", "Telia");
             Telephone telephone2 = new Telephone(14113673, "Work telephone", "Oister");
             Telephone telephone3 = new Telephone(21351791, "Mobile telephone", "3");
-            List<Telephone> telephones = new List<Telephone>();
-            telephones.Add(telephone1);
-            telephones.Add(telephone2);
-            telephones.Add(telephone3);
+            Telephone telephone4 = new Telephone(45455454, "Private telephone", "Telia");
+            List<Telephone> bobTelephones = new List<Telephone>();
+            List<Telephone> timTelephones = new List<Telephone>();
+            bobTelephones.Add(telephone1);
+            bobTelephones.Add(telephone2);
+            bobTelephones.Add(telephone3);
+            timTelephones.Add(telephone4);
 
             City aarhusV = new City("Aarhus V", "8210");
             City blacktown = new City("Blacktown", "CF3 7QG");
@@ -26,17 +29,22 @@ namespace HandIn2._1
             Address address2 = new Address("Southend Avenue", 70, blacktown, "Work Address", "England");
             Address address3 = new Address("Gamlivegur", 16, Kirkjubøur, "Summer House", "Faroe Islands");
             MainAddress mainAddress = new MainAddress(address1);
-            List<AlternativeAddress> altAddresses = new List<AlternativeAddress>();
+            List<AlternativeAddress> bobAltAddresses = new List<AlternativeAddress>();
+            List<AlternativeAddress> timAltAddresses = new List<AlternativeAddress>();
             AlternativeAddress altAddress1 = new AlternativeAddress(address2);
             AlternativeAddress altAddress2 = new AlternativeAddress(address3);
-            altAddresses.Add(altAddress1);
-            altAddresses.Add(altAddress2);
+            bobAltAddresses.Add(altAddress1);
+            bobAltAddresses.Add(altAddress2);
+            timAltAddresses.Add(altAddress2);
 
-            Contact contact1 = new Contact("Bob@hotmail.com", telephones, mainAddress, altAddresses);
+            Contact bobContact = new Contact("Bob@hotmail.com", bobTelephones, mainAddress, bobAltAddresses);
+            Contact timContact = new Contact("Tim@Hotmail.com", timTelephones, mainAddress, timAltAddresses);
 
-            Person person1 = new Person("Bob", "Martin", "Jensen", contact1);
+            Person person1 = new Person("Bob", "Martin", "Jensen", bobContact);
+            Person person2 = new Person("Tim", "Martin", "Jensen", timContact);
             List<Person> personList = new List<Person>();
             personList.Add(person1);
+            personList.Add(person2);
             Kartotek myKartotek = new Kartotek(personList);
 
             foreach (var alts in myKartotek.PersonList)

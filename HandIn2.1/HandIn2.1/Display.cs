@@ -62,7 +62,7 @@ namespace HandIn2._1
                         break;
                 }
             }
-            Console.WriteLine("\n");
+            Console.WriteLine("-------------------------------------------------------------------");
         }
     }
 }
