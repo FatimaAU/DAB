@@ -15,11 +15,11 @@ namespace HandIn2._1
 
            Console.WriteLine("Name: " + person.FirstName + " " + person.MiddleName + " " + person.LastName);
             Console.WriteLine("Email: " + person.Contact.Email);
-            foreach (var alts in person.Contact.Telephone)
+            foreach (var telephone in person.Contact.Telephone)
             {
-                Console.WriteLine(alts.Info + ":");
-                Console.WriteLine("\tPhone number: " + alts.Number);
-                Console.WriteLine("\tTelecompany: " + alts.TeleCompany + "\n");
+                Console.WriteLine(telephone.Info + ":");
+                Console.WriteLine("\tPhone number: " + telephone.Number);
+                Console.WriteLine("\tTelecompany: " + telephone.TeleCompany + "\n");
             }
            
             Console.Write(person.Contact.MainAddress.Address.Type + ": "
