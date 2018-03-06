@@ -7,9 +7,9 @@ namespace HandIn2._1
     {
         public AlternativeAddress(Address address = null)
         {
-            AltAddressList = address;
+            AltAddress = address;
         }
 
-        public Address AltAddressList { get; set; }
+        public Address AltAddress { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace HandIn2._1
             City aarhusV = new City("Aarhus V", "8210");
             City blacktown = new City("Blacktown", "CF3 7QG");
             City Kirkjubøur = new City("Kirkjubøur", "175");
-            Address address1 = new Address("Kalendervej", 39, aarhusV, "Private Address", "Danmark");
+            Address address1 = new Address("Kalendervej", 39, aarhusV, "Private Address", "Denmark");
             Address address2 = new Address("Southend Avenue", 70, blacktown, "Work Address", "England");
             Address address3 = new Address("Gamlivegur", 16, Kirkjubøur, "Summer House", "Faroe Islands");
             MainAddress mainAddress = new MainAddress(address1);

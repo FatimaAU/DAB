@@ -28,7 +28,7 @@ namespace HandIn2._1
 
                 switch (person.Contact.MainAddress.Address.Country)
                 {
-                    case "Danmark":
+                    case "Denmark":
                         Console.WriteLine("DK" + " " + person.Contact.MainAddress.Address.City.ZipCode + " " + person.Contact.MainAddress.Address.City.CityName);
                         break;
 
@@ -43,22 +43,22 @@ namespace HandIn2._1
 
             foreach (var alts in person.Contact.Alternatives)
             {
-                Console.Write(alts.AltAddressList.Type + ": "
-                                        + alts.AltAddressList.StreetName + " "
-                                        + alts.AltAddressList.HouseNumber + " ");
+                Console.Write(alts.AltAddress.Type + ": "
+                                        + alts.AltAddress.StreetName + " "
+                                        + alts.AltAddress.HouseNumber + " ");
 
-                switch (alts.AltAddressList.Country)
+                switch (alts.AltAddress.Country)
                 {
-                    case "Danmark":
-                        Console.WriteLine("DK" + " " + alts.AltAddressList.City.ZipCode + " " + alts.AltAddressList.City.CityName);
+                    case "Denmark":
+                        Console.WriteLine("DK" + " " + alts.AltAddress.City.ZipCode + " " + alts.AltAddress.City.CityName);
                         break;
 
                     case "England":
-                        Console.WriteLine(alts.AltAddressList.City.CityName + " " + alts.AltAddressList.City.ZipCode + ", " + "UK");
+                        Console.WriteLine(alts.AltAddress.City.CityName + " " + alts.AltAddress.City.ZipCode + ", " + "UK");
                         break;
 
                     case "Faroe Islands":
-                        Console.WriteLine("FO" + " " + alts.AltAddressList.City.ZipCode + " " + alts.AltAddressList.City.CityName);
+                        Console.WriteLine("FO" + " " + alts.AltAddress.City.ZipCode + " " + alts.AltAddress.City.CityName);
                         break;
                 }
             }
