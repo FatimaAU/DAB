@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E9325FAC-2812-43AE-83A4-385AE445D5A8}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>PersonKartotek</RootNamespace>
+    <AssemblyName>PersonKartotek</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Address.cs" />
+    <Compile Include="AlternativeAddress.cs" />
+    <Compile Include="BloggingContext.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="Contact.cs" />
+    <Compile Include="MainAddress.cs" />
+    <Compile Include="Migrations\201803221159576_InitialCreate.cs" />
+    <Compile Include="Migrations\201803221159576_InitialCreate.Designer.cs">
+      <DependentUpon>201803221159576_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221209455_AddFirstName.cs" />
+    <Compile Include="Migrations\201803221209455_AddFirstName.Designer.cs">
+      <DependentUpon>201803221209455_AddFirstName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221210194_AddMiddleName.cs" />
+    <Compile Include="Migrations\201803221210194_AddMiddleName.Designer.cs">
+      <DependentUpon>201803221210194_AddMiddleName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221210423_AddLastName.cs" />
+    <Compile Include="Migrations\201803221210423_AddLastName.Designer.cs">
+      <DependentUpon>201803221210423_AddLastName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221221066_AddTelephones.cs" />
+    <Compile Include="Migrations\201803221221066_AddTelephones.Designer.cs">
+      <DependentUpon>201803221221066_AddTelephones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221221267_AddMainAddress.cs" />
+    <Compile Include="Migrations\201803221221267_AddMainAddress.Designer.cs">
+      <DependentUpon>201803221221267_AddMainAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221222021_AddAlternativeAddresses.cs" />
+    <Compile Include="Migrations\201803221222021_AddAlternativeAddresses.Designer.cs">
+      <DependentUpon>201803221222021_AddAlternativeAddresses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221226247_AddNumber.cs" />
+    <Compile Include="Migrations\201803221226247_AddNumber.Designer.cs">
+      <DependentUpon>201803221226247_AddNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221252595_AddContact.cs" />
+    <Compile Include="Migrations\201803221252595_AddContact.Designer.cs">
+      <DependentUpon>201803221252595_AddContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221254382_AddContactId.cs" />
+    <Compile Include="Migrations\201803221254382_AddContactId.Designer.cs">
+      <DependentUpon>201803221254382_AddContactId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221257093_AddContacts.cs" />
+    <Compile Include="Migrations\201803221257093_AddContacts.Designer.cs">
+      <DependentUpon>201803221257093_AddContacts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221300201_AddAddress.cs" />
+    <Compile Include="Migrations\201803221300201_AddAddress.Designer.cs">
+      <DependentUpon>201803221300201_AddAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221300547_AddAddress1.cs" />
+    <Compile Include="Migrations\201803221300547_AddAddress1.Designer.cs">
+      <DependentUpon>201803221300547_AddAddress1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221305093_AddStreetName.cs" />
+    <Compile Include="Migrations\201803221305093_AddStreetName.Designer.cs">
+      <DependentUpon>201803221305093_AddStreetName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221306494_AddCityName.cs" />
+    <Compile Include="Migrations\201803221306494_AddCityName.Designer.cs">
+      <DependentUpon>201803221306494_AddCityName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221407521_AddRepository.cs" />
+    <Compile Include="Migrations\201803221407521_AddRepository.Designer.cs">
+      <DependentUpon>201803221407521_AddRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221428537_AddRepository1.cs" />
+    <Compile Include="Migrations\201803221428537_AddRepository1.Designer.cs">
+      <DependentUpon>201803221428537_AddRepository1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221430081_AddRepository2.cs" />
+    <Compile Include="Migrations\201803221430081_AddRepository2.Designer.cs">
+      <DependentUpon>201803221430081_AddRepository2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="Telephone.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201803221159576_InitialCreate.resx">
+      <DependentUpon>201803221159576_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221209455_AddFirstName.resx">
+      <DependentUpon>201803221209455_AddFirstName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221210194_AddMiddleName.resx">
+      <DependentUpon>201803221210194_AddMiddleName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221210423_AddLastName.resx">
+      <DependentUpon>201803221210423_AddLastName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221221066_AddTelephones.resx">
+      <DependentUpon>201803221221066_AddTelephones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221221267_AddMainAddress.resx">
+      <DependentUpon>201803221221267_AddMainAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221222021_AddAlternativeAddresses.resx">
+      <DependentUpon>201803221222021_AddAlternativeAddresses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221226247_AddNumber.resx">
+      <DependentUpon>201803221226247_AddNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221252595_AddContact.resx">
+      <DependentUpon>201803221252595_AddContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221254382_AddContactId.resx">
+      <DependentUpon>201803221254382_AddContactId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221257093_AddContacts.resx">
+      <DependentUpon>201803221257093_AddContacts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221300201_AddAddress.resx">
+      <DependentUpon>201803221300201_AddAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221300547_AddAddress1.resx">
+      <DependentUpon>201803221300547_AddAddress1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221305093_AddStreetName.resx">
+      <DependentUpon>201803221305093_AddStreetName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221306494_AddCityName.resx">
+      <DependentUpon>201803221306494_AddCityName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221407521_AddRepository.resx">
+      <DependentUpon>201803221407521_AddRepository.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221428537_AddRepository1.resx">
+      <DependentUpon>201803221428537_AddRepository1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221430081_AddRepository2.resx">
+      <DependentUpon>201803221430081_AddRepository2.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
