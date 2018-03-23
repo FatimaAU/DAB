@@ -9,17 +9,14 @@ namespace PersonKartotek
     class Repository
     {
 
-        public void addPerson(string fName, string mName, string lName, Contact contact)
+        public void addPerson(string fName, string mName, string lName)
         {
             using (var db = new KartotekContext())
             {
-                //Create and save a new person
-
-                var person = new Person {FirstName = fName, MiddleName = mName, LastName = lName, Contact = contact};
+                var person = new Person { FirstName = fName, MiddleName = mName, LastName = lName };
                 db.Persons.Add(person);
                 db.SaveChanges();
 
-                //Display all people from the database
                 var query = from b in db.Persons
                     orderby b.FirstName
                     select b;
@@ -37,18 +34,15 @@ namespace PersonKartotek
         {
             using (var db = new KartotekContext())
             {
-                //Create and save a new person
-
                 var city = new City {CityName = cityName, ZipCode = zipCode};
                 db.Cities.Add(city);
                 db.SaveChanges();
 
-                //Display all people from the database
-                var query = from c in db.Cities
-                    orderby c.CityName
-                    select c;
+                var query = from b in db.Cities
+                    orderby b.CityName
+                    select b;
 
-                Console.WriteLine("All people in the database:");
+                Console.WriteLine("All cities in the database:");
                 foreach (var item in query)
                 {
                     Console.WriteLine(item.CityName + " " + item.ZipCode);

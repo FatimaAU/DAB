@@ -9,9 +9,9 @@ namespace PersonKartotek
         //    CityName = name;
         //    ZipCode = zipcode;
         //}
+
         [Key]
-        public int CityId { get; set; }
+        public string ZipCode { get; set; } 
         public string CityName { get; set; }
-        public string ZipCode { get; set; }
     }
 }

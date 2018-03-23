@@ -127,6 +127,18 @@
     <Compile Include="Migrations\201803221430081_AddRepository2.Designer.cs">
       <DependentUpon>201803221430081_AddRepository2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803231126098_AddType.cs" />
+    <Compile Include="Migrations\201803231126098_AddType.Designer.cs">
+      <DependentUpon>201803231126098_AddType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803231223148_AddType1.cs" />
+    <Compile Include="Migrations\201803231223148_AddType1.Designer.cs">
+      <DependentUpon>201803231223148_AddType1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803231307292_Key.cs" />
+    <Compile Include="Migrations\201803231307292_Key.Designer.cs">
+      <DependentUpon>201803231307292_Key.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
@@ -192,6 +204,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803221430081_AddRepository2.resx">
       <DependentUpon>201803221430081_AddRepository2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803231126098_AddType.resx">
+      <DependentUpon>201803231126098_AddType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803231223148_AddType1.resx">
+      <DependentUpon>201803231223148_AddType1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803231307292_Key.resx">
+      <DependentUpon>201803231307292_Key.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

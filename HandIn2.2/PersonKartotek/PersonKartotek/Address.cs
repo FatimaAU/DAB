@@ -15,6 +15,7 @@ namespace PersonKartotek
         public int AddressId { get; set; }
         public string StreetName { get; set; }
         public int HouseNumber { get; set; }
+        public string Type { get; set; }
         public string Country { get; set; }
         public virtual City City { get; set; }
     }

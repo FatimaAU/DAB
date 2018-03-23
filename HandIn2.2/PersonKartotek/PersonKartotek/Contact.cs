@@ -14,7 +14,6 @@ namespace PersonKartotek
         //    AlternativeAddresses = alternativeAddresses;
         //}
         [Key]
-        public int ContactId { get; set; }
         public string Email { get; set; }
         public virtual List<Telephone> Telephones { get; set; }
         public virtual MainAddress MainAddress { get; set; }
