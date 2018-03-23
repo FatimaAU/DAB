@@ -12,19 +12,20 @@ using Newtonsoft.Json;
 
 namespace HandIn2._2
 {
-    class Program
+    partial class Program
     {
-        // ADD THIS PART TO YOUR CODE
         private const string EndpointUrl = "https://localhost:8081";
 
         private const string PrimaryKey =
             "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
 
+        public string DatabaseId = "PersonKartotek";
+        public Repository Repository = new Repository();
+
         private DocumentClient client;
 
         static void Main(string[] args)
         {
-            // ADD THIS PART TO YOUR CODE
             try
             {
                 Program p = new Program();
@@ -48,60 +49,15 @@ namespace HandIn2._2
             }
         }
 
-        public class Person
-        {
-            [JsonProperty(PropertyName = "id")] public string Id { get; set; }
-            public string FirstName { get; set; }
-            public string MiddleName { get; set; }
-            public string LastName { get; set; }
-            public Contact Contact { get; set; }
-
-            public override string ToString()
-            {
-                return JsonConvert.SerializeObject(this);
-            }
-        }
-
-
-        public class Contact
-        {
-            public string Email { get; set; }
-            public Address MainAddress { get; set; }
-            public Address[] AlternateAddresses { get; set; }
-            public Telephone[] Telephones { get; set; }
-        }
-
-
-        public class Telephone
-        {
-            public string Number { get; set; }
-            public string Info { get; set; }
-            public string TeleCompany { get; set; }
-        }
-
-        public class Address
-        {
-            public string StreetName { get; set; }
-            public int HouseNumber { get; set; }
-            public string Type { get; set; }
-            public City City { get; set; }
-            public string Country { get; set; }
-        }
-
-        public class City
-        {
-            public string CityName { get; set; }
-            public string ZipCode { get; set; }
-        }
-
-        // ADD THIS PART TO YOUR CODE
         private async Task InitializeDB()
         {
             this.client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
-            await this.client.CreateDatabaseIfNotExistsAsync(new Database {Id = "PersonKartotek"});
-            await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("PersonKartotek"),
-                new DocumentCollection {Id = "PersonKartotek"});
+            await this.client.CreateDatabaseIfNotExistsAsync(new Database {Id = DatabaseId});
+            await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DatabaseId),
+                new DocumentCollection {Id = DatabaseId});
 
+            Repository.CreatePerson();
+            
             Person Søren = new Person
             {
                 Id = "1",
@@ -140,11 +96,10 @@ namespace HandIn2._2
                 },
             };
 
-            await this.CreatePersonDocumentIfNotExists("PersonKartotek", "PersonKartotek", Søren);
+            await this.CreatePersonDocumentIfNotExists(DatabaseId, DatabaseId, Søren);
         }
 
 
-        // ADD THIS PART TO YOUR CODE
         private void WriteToConsoleAndPromptToContinue(string format, params object[] args)
         {
             Console.WriteLine(format, args);
