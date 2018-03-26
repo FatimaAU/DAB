@@ -12,7 +12,8 @@ using Newtonsoft.Json;
 
 namespace HandIn2._2
 {
-    partial class Program
+
+    public class Program
     {
         private const string EndpointUrl = "https://localhost:8081";
 
@@ -20,15 +21,15 @@ namespace HandIn2._2
             "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
 
         public string DatabaseId = "PersonKartotek";
-        public Repository Repository = new Repository();
 
-        private DocumentClient client;
+        public DocumentClient client;
+        static public Program p;
 
         static void Main(string[] args)
         {
             try
             {
-                Program p = new Program();
+                p = new Program();
                 p.InitializeDB().Wait();
             }
             catch (DocumentClientException de)
@@ -56,78 +57,49 @@ namespace HandIn2._2
             await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DatabaseId),
                 new DocumentCollection {Id = DatabaseId});
 
+            Repository Repository = new Repository(client, p);
+
+
             Repository.CreatePerson();
             
-            Person Søren = new Person
-            {
-                Id = "1",
-                FirstName = "Søren",
-                LastName = "Bachsen",
-                Contact = new Contact
-                {
-                    MainAddress = new Address
-                    {
-                        City = new City
-                        {
-                            CityName = "Aarhus",
-                            ZipCode = "8596"
-                        },
-                        Country = "Denmark",
-                        HouseNumber = 45,
-                        StreetName = "Bechvej",
-                        Type = "Main"
-                    },
-                    Email = "Bech@bach.bech",
-                    Telephones = new Telephone[]
-                    {
-                        new Telephone
-                        {
-                            Info = "Home",
-                            Number = "01100101010001",
-                            TeleCompany = "BachFone"
-                        },
-                        new Telephone
-                        {
-                            Info = "Work",
-                            Number = "494875994",
-                            TeleCompany = "BechBachTel"
-                        },
-                    },
-                },
-            };
+            //Person Søren = new Person
+            //{
+            //    Id = "1",
+            //    FirstName = "Søren",
+            //    LastName = "Bachsen",
+            //    Contact = new Contact
+            //    {
+            //        MainAddress = new Address
+            //        {
+            //            City = new City
+            //            {
+            //                CityName = "Aarhus",
+            //                ZipCode = "8596"
+            //            },
+            //            Country = "Denmark",
+            //            HouseNumber = 45,
+            //            StreetName = "Bechvej",
+            //            Type = "Main"
+            //        },
+            //        Email = "Bech@bach.bech",
+            //        Telephones = new Telephone[]
+            //        {
+            //            new Telephone
+            //            {
+            //                Info = "Home",
+            //                Number = "01100101010001",
+            //                TeleCompany = "BachFone"
+            //            },
+            //            new Telephone
+            //            {
+            //                Info = "Work",
+            //                Number = "494875994",
+            //                TeleCompany = "BechBachTel"
+            //            },
+            //        },
+            //    },
+            //};
 
-            await this.CreatePersonDocumentIfNotExists(DatabaseId, DatabaseId, Søren);
-        }
-
-
-        private void WriteToConsoleAndPromptToContinue(string format, params object[] args)
-        {
-            Console.WriteLine(format, args);
-            Console.WriteLine("Press any key to continue ...");
-            Console.ReadKey();
-        }
-
-        private async Task CreatePersonDocumentIfNotExists(string databaseName, string collectionName, Person person)
-        {
-            try
-            {
-                await this.client.ReadDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName,
-                    person.Id));
-                this.WriteToConsoleAndPromptToContinue("Found {0}", person.Id);
-            }
-            catch (DocumentClientException de)
-            {
-                if (de.StatusCode == HttpStatusCode.NotFound)
-                {
-                    await this.client.CreateDocumentAsync(
-                        UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), person);
-                    this.WriteToConsoleAndPromptToContinue("Created Person {0}", person.Id);
-                }
-                else
-                {
-                    throw;
-                }
-            }
         }
     }
 }

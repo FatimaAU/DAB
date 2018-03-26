@@ -54,6 +54,7 @@
     <Compile Include="Address.cs" />
     <Compile Include="City.cs" />
     <Compile Include="Contact.cs" />
+    <Compile Include="MainAddress.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
