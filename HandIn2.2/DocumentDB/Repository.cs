@@ -21,7 +21,7 @@ namespace HandIn2._2
             _client = client;
 
         }
-        public void CreatePerson()
+        public async Task CreatePerson()
         {
             AddToDatabase(InitPerson());
         }
@@ -145,7 +145,7 @@ namespace HandIn2._2
             return newPerson;
         }
 
-        public void ReadPerson(string databaseName, string collectionName)
+        public async Task ReadPerson(string databaseName, string collectionName)
         {
             Console.WriteLine("Enter person ID: ");
             string personID = Console.ReadLine();
@@ -165,7 +165,7 @@ namespace HandIn2._2
             }
         }
 
-        public async void UpdatePerson()
+        public async Task UpdatePerson()
         {
             var newPerson = InitPerson();
             try
@@ -178,7 +178,7 @@ namespace HandIn2._2
             }
         }
 
-        public async void DeletePerson()
+        public async Task DeletePerson()
         {
             Console.WriteLine("Write Person ID for person to delete: ");
             string personId = Console.ReadLine();
@@ -195,11 +195,12 @@ namespace HandIn2._2
 
         private async Task ReplacePersonDocument(string databaseName, string collectionName, string personId, Person updatedPerson)
         {
+            Console.WriteLine("ReplacePersonDocument()" + personId);
             await _client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, personId), updatedPerson);
-            this.WriteToConsoleAndPromptToContinue("Replaced Person {0}", personId);
+            Console.WriteLine("Replaced Person {0}", personId);
         }
 
-        private async void AddToDatabase(Person person)
+        private async Task AddToDatabase(Person person)
         {
            Console.WriteLine("Adding person to database\n");
            await CreatePersonDocumentIfNotExists(Program.DatabaseId, Program.DatabaseId, person);
@@ -217,7 +218,7 @@ namespace HandIn2._2
             {
                 await _client.ReadDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName,
                     person.Id));
-                WriteToConsoleAndPromptToContinue("Found {0}", person.Id);
+                Console.WriteLine("Found {0}", person.Id);
             }
             catch (DocumentClientException de)
             {
@@ -225,7 +226,7 @@ namespace HandIn2._2
                 {
                     await _client.CreateDocumentAsync(
                         UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), person);
-                    WriteToConsoleAndPromptToContinue("Created Person {0}", person.Id);
+                    Console.WriteLine("Created Person {0}", person.Id);
                 }
                 else
                 {
@@ -233,13 +234,5 @@ namespace HandIn2._2
                 }
             }
         }
-
-        private void WriteToConsoleAndPromptToContinue(string format, params object[] args)
-        {
-            Console.WriteLine(format, args);
-            Console.WriteLine("Press any key to continue ...");
-            Console.ReadKey();
-        }
-
     }
 }

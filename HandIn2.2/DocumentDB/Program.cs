@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
-// ADD THIS PART TO YOUR CODE
-using System.Net;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
-using Newtonsoft.Json;
 
 namespace HandIn2._2
 {
@@ -44,12 +36,8 @@ namespace HandIn2._2
                 Exception baseException = e.GetBaseException();
                 Console.WriteLine("Error: {0}, Message: {1}", e.Message, baseException.Message);
             }
-            finally
-            {
-
-                Console.WriteLine("End of shit, press any key to exit.");
-                Console.ReadKey();
-            }
+            
+            
         }
 
         private async Task InitializeDB()
@@ -60,79 +48,29 @@ namespace HandIn2._2
                 new DocumentCollection {Id = DatabaseId});
 
             Menu();
-
-            //Repository Repository = new Repository(client, p);
-
-
-            //Repository.CreatePerson();
-
-            //Repository.ReadPerson(DatabaseId, DatabaseId);
-
-            //Repository.updatePerson();
-
-            //Repository.DeletePerson();
-            
-            //Person Søren = new Person
-            //{
-            //    Id = "1",
-            //    FirstName = "Søren",
-            //    LastName = "Bachsen",
-            //    Contact = new Contact
-            //    {
-            //        MainAddress = new Address
-            //        {
-            //            City = new City
-            //            {
-            //                CityName = "Aarhus",
-            //                ZipCode = "8596"
-            //            },
-            //            Country = "Denmark",
-            //            HouseNumber = 45,
-            //            StreetName = "Bechvej",
-            //            Type = "Main"
-            //        },
-            //        Email = "Bech@bach.bech",
-            //        Telephones = new Telephone[]
-            //        {
-            //            new Telephone
-            //            {
-            //                Info = "Home",
-            //                Number = "01100101010001",
-            //                TeleCompany = "BachFone"
-            //            },
-            //            new Telephone
-            //            {
-            //                Info = "Work",
-            //                Number = "494875994",
-            //                TeleCompany = "BechBachTel"
-            //            },
-            //        },
-            //    },
-            //};
-
         }
 
-        private void Menu()
+        private async Task Menu()
         {
             Repository Repository = new Repository(client, p);
 
             while (true)
             {
                 Console.WriteLine("Select task, 'C'reate, 'R'ead, 'U'pdate, 'D'elete:");
-                string selection = Console.ReadLine();
+                string selection = Console.ReadLine().ToUpper();
                 switch (selection)
                 {
                     case "C":
-                        Repository.CreatePerson();
+                        await Repository.CreatePerson();
                         break;
                     case "R":
-                        Repository.ReadPerson(DatabaseId, DatabaseId);
+                        await Repository.ReadPerson(DatabaseId, DatabaseId);
                         break;
                     case "U":
-                        Repository.UpdatePerson();
+                        await Repository.UpdatePerson();
                         break;
                     case "D":
-                        Repository.DeletePerson();
+                        await Repository.DeletePerson();
                         break;
                     default:
                         Console.WriteLine("Only acceptable inputs are: 'C' 'R' 'U' 'D'");
