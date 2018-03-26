@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,7 @@ namespace HandIn2._2
             }
             finally
             {
+
                 Console.WriteLine("End of shit, press any key to exit.");
                 Console.ReadKey();
             }
@@ -57,10 +59,18 @@ namespace HandIn2._2
             await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DatabaseId),
                 new DocumentCollection {Id = DatabaseId});
 
-            Repository Repository = new Repository(client, p);
+            Menu();
+
+            //Repository Repository = new Repository(client, p);
 
 
-            Repository.CreatePerson();
+            //Repository.CreatePerson();
+
+            //Repository.ReadPerson(DatabaseId, DatabaseId);
+
+            //Repository.updatePerson();
+
+            //Repository.DeletePerson();
             
             //Person Søren = new Person
             //{
@@ -100,6 +110,35 @@ namespace HandIn2._2
             //    },
             //};
 
+        }
+
+        private void Menu()
+        {
+            Repository Repository = new Repository(client, p);
+
+            while (true)
+            {
+                Console.WriteLine("Select task, 'C'reate, 'R'ead, 'U'pdate, 'D'elete:");
+                string selection = Console.ReadLine();
+                switch (selection)
+                {
+                    case "C":
+                        Repository.CreatePerson();
+                        break;
+                    case "R":
+                        Repository.ReadPerson(DatabaseId, DatabaseId);
+                        break;
+                    case "U":
+                        Repository.UpdatePerson();
+                        break;
+                    case "D":
+                        Repository.DeletePerson();
+                        break;
+                    default:
+                        Console.WriteLine("Only acceptable inputs are: 'C' 'R' 'U' 'D'");
+                        break;
+                }
+            }
         }
     }
 }

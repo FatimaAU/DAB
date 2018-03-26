@@ -23,6 +23,11 @@ namespace HandIn2._2
         }
         public void CreatePerson()
         {
+            AddToDatabase(InitPerson());
+        }
+
+        private Person InitPerson()
+        {
             Person newPerson = new Person();
             newPerson = new Person();
             Contact contact = new Contact();
@@ -33,8 +38,6 @@ namespace HandIn2._2
             mainAddress.City = city;
             newPerson.Contact = contact;
             contact.MainAddress = mainAddress;
-
-            Console.WriteLine("Creating new person\n");
 
             Console.Write("Enter id: ");
             newPerson.Id = Console.ReadLine();
@@ -57,7 +60,7 @@ namespace HandIn2._2
             newPerson.Contact.MainAddress.StreetName = Console.ReadLine();
 
             Console.Write("Enter house number: ");
-            newPerson.Contact.MainAddress.HouseNumber = int.Parse(Console.ReadLine());
+            newPerson.Contact.MainAddress.HouseNumber = Console.ReadLine();
 
             Console.Write("Enter city name: ");
             newPerson.Contact.MainAddress.City.CityName = Console.ReadLine();
@@ -88,7 +91,7 @@ namespace HandIn2._2
                 altAddresses[counter].StreetName = Console.ReadLine();
 
                 Console.Write("Enter house number: ");
-                altAddresses[counter].HouseNumber= int.Parse(Console.ReadLine());
+                altAddresses[counter].HouseNumber = Console.ReadLine();
 
                 Console.Write("Enter city name: ");
                 altAddresses[counter].City.CityName = Console.ReadLine();
@@ -127,7 +130,7 @@ namespace HandIn2._2
                 telephones[counter].TeleCompany = Console.ReadLine();
 
                 counter++;
-                
+
                 Console.WriteLine("Enter alternative number (or press enter to exit)");
 
 
@@ -139,13 +142,73 @@ namespace HandIn2._2
                 newPerson.Contact.Telephones = telephoneArray;
             }
 
-            AddToDatabase(newPerson);
+            return newPerson;
+        }
+
+        public void ReadPerson(string databaseName, string collectionName)
+        {
+            Console.WriteLine("Enter person ID: ");
+            string personID = Console.ReadLine();
+
+            // Set some common query options
+            FeedOptions queryOptions = new FeedOptions {MaxItemCount = -1};
+
+            // Here we find the Andersen family via its LastName
+            IQueryable<Person> personQuery = _client.CreateDocumentQuery<Person>(
+                    UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), queryOptions)
+                .Where(p => p.Id == personID);
+
+            // The query is executed synchronously here, but can also be executed asynchronously via the IDocumentQuery<T> interface
+            foreach (Person person in personQuery)
+            {
+                Console.WriteLine("\tRead {0}", person);
+            }
+        }
+
+        public async void UpdatePerson()
+        {
+            var newPerson = InitPerson();
+            try
+            {
+                await ReplacePersonDocument(Program.DatabaseId, Program.DatabaseId, newPerson.Id, newPerson);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Person did not exist. Nothing has been updated.");
+            }
+        }
+
+        public async void DeletePerson()
+        {
+            Console.WriteLine("Write Person ID for person to delete: ");
+            string personId = Console.ReadLine();
+
+            try
+            {
+                await DeletePersonDocument(Program.DatabaseId, Program.DatabaseId, personId);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Person does not exist. Nothing has been deleted");
+            }
+        }
+
+        private async Task ReplacePersonDocument(string databaseName, string collectionName, string personId, Person updatedPerson)
+        {
+            await _client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, personId), updatedPerson);
+            this.WriteToConsoleAndPromptToContinue("Replaced Person {0}", personId);
         }
 
         private async void AddToDatabase(Person person)
         {
            Console.WriteLine("Adding person to database\n");
            await CreatePersonDocumentIfNotExists(Program.DatabaseId, Program.DatabaseId, person);
+        }
+
+        private async Task DeletePersonDocument(string databaseName, string collectionName, string documentName)
+        {
+            await _client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, documentName));
+            Console.WriteLine("Deleted Person {0}", documentName);
         }
 
         private async Task CreatePersonDocumentIfNotExists(string databaseName, string collectionName, Person person)
