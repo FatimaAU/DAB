@@ -63,10 +63,6 @@
     <Compile Include="Migrations\201803221209455_AddFirstName.Designer.cs">
       <DependentUpon>201803221209455_AddFirstName.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803221210194_AddMiddleName.cs" />
-    <Compile Include="Migrations\201803221210194_AddMiddleName.Designer.cs">
-      <DependentUpon>201803221210194_AddMiddleName.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201803221210423_AddLastName.cs" />
     <Compile Include="Migrations\201803221210423_AddLastName.Designer.cs">
       <DependentUpon>201803221210423_AddLastName.cs</DependentUpon>
@@ -75,10 +71,6 @@
     <Compile Include="Migrations\201803221221066_AddTelephones.Designer.cs">
       <DependentUpon>201803221221066_AddTelephones.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803221221267_AddMainAddress.cs" />
-    <Compile Include="Migrations\201803221221267_AddMainAddress.Designer.cs">
-      <DependentUpon>201803221221267_AddMainAddress.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201803221222021_AddAlternativeAddresses.cs" />
     <Compile Include="Migrations\201803221222021_AddAlternativeAddresses.Designer.cs">
       <DependentUpon>201803221222021_AddAlternativeAddresses.cs</DependentUpon>
@@ -86,10 +78,6 @@
     <Compile Include="Migrations\201803221226247_AddNumber.cs" />
     <Compile Include="Migrations\201803221226247_AddNumber.Designer.cs">
       <DependentUpon>201803221226247_AddNumber.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803221252595_AddContact.cs" />
-    <Compile Include="Migrations\201803221252595_AddContact.Designer.cs">
-      <DependentUpon>201803221252595_AddContact.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201803221254382_AddContactId.cs" />
     <Compile Include="Migrations\201803221254382_AddContactId.Designer.cs">
@@ -123,10 +111,6 @@
     <Compile Include="Migrations\201803221428537_AddRepository1.Designer.cs">
       <DependentUpon>201803221428537_AddRepository1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803221430081_AddRepository2.cs" />
-    <Compile Include="Migrations\201803221430081_AddRepository2.Designer.cs">
-      <DependentUpon>201803221430081_AddRepository2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201803231126098_AddType.cs" />
     <Compile Include="Migrations\201803231126098_AddType.Designer.cs">
       <DependentUpon>201803231126098_AddType.cs</DependentUpon>
@@ -138,6 +122,42 @@
     <Compile Include="Migrations\201803231307292_Key.cs" />
     <Compile Include="Migrations\201803231307292_Key.Designer.cs">
       <DependentUpon>201803231307292_Key.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803261004058_Program.cs" />
+    <Compile Include="Migrations\201803261004058_Program.Designer.cs">
+      <DependentUpon>201803261004058_Program.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803261007013_Telephone.cs" />
+    <Compile Include="Migrations\201803261007013_Telephone.Designer.cs">
+      <DependentUpon>201803261007013_Telephone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803261019512_City.cs" />
+    <Compile Include="Migrations\201803261019512_City.Designer.cs">
+      <DependentUpon>201803261019512_City.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803261040453_Kartotek.cs" />
+    <Compile Include="Migrations\201803261040453_Kartotek.Designer.cs">
+      <DependentUpon>201803261040453_Kartotek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803261047219_Kartotek1.cs" />
+    <Compile Include="Migrations\201803261047219_Kartotek1.Designer.cs">
+      <DependentUpon>201803261047219_Kartotek1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803261050011_Kartotek2.cs" />
+    <Compile Include="Migrations\201803261050011_Kartotek2.Designer.cs">
+      <DependentUpon>201803261050011_Kartotek2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803261111187_Person.cs" />
+    <Compile Include="Migrations\201803261111187_Person.Designer.cs">
+      <DependentUpon>201803261111187_Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803261120451_Person1.cs" />
+    <Compile Include="Migrations\201803261120451_Person1.Designer.cs">
+      <DependentUpon>201803261120451_Person1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803261257078_readCity.cs" />
+    <Compile Include="Migrations\201803261257078_readCity.Designer.cs">
+      <DependentUpon>201803261257078_readCity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
@@ -157,26 +177,17 @@
     <EmbeddedResource Include="Migrations\201803221209455_AddFirstName.resx">
       <DependentUpon>201803221209455_AddFirstName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803221210194_AddMiddleName.resx">
-      <DependentUpon>201803221210194_AddMiddleName.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803221210423_AddLastName.resx">
       <DependentUpon>201803221210423_AddLastName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803221221066_AddTelephones.resx">
       <DependentUpon>201803221221066_AddTelephones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803221221267_AddMainAddress.resx">
-      <DependentUpon>201803221221267_AddMainAddress.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803221222021_AddAlternativeAddresses.resx">
       <DependentUpon>201803221222021_AddAlternativeAddresses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803221226247_AddNumber.resx">
       <DependentUpon>201803221226247_AddNumber.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803221252595_AddContact.resx">
-      <DependentUpon>201803221252595_AddContact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803221254382_AddContactId.resx">
       <DependentUpon>201803221254382_AddContactId.cs</DependentUpon>
@@ -202,9 +213,6 @@
     <EmbeddedResource Include="Migrations\201803221428537_AddRepository1.resx">
       <DependentUpon>201803221428537_AddRepository1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803221430081_AddRepository2.resx">
-      <DependentUpon>201803221430081_AddRepository2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803231126098_AddType.resx">
       <DependentUpon>201803231126098_AddType.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,6 +221,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803231307292_Key.resx">
       <DependentUpon>201803231307292_Key.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803261004058_Program.resx">
+      <DependentUpon>201803261004058_Program.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803261007013_Telephone.resx">
+      <DependentUpon>201803261007013_Telephone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803261019512_City.resx">
+      <DependentUpon>201803261019512_City.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803261040453_Kartotek.resx">
+      <DependentUpon>201803261040453_Kartotek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803261047219_Kartotek1.resx">
+      <DependentUpon>201803261047219_Kartotek1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803261050011_Kartotek2.resx">
+      <DependentUpon>201803261050011_Kartotek2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803261111187_Person.resx">
+      <DependentUpon>201803261111187_Person.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803261120451_Person1.resx">
+      <DependentUpon>201803261120451_Person1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803261257078_readCity.resx">
+      <DependentUpon>201803261257078_readCity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

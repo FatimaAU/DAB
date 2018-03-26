@@ -3,7 +3,7 @@ namespace PersonKartotek.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddContact : DbMigration
+    public partial class readCity : DbMigration
     {
         public override void Up()
         {

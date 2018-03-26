@@ -7,13 +7,13 @@ namespace PersonKartotek.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddContact : IMigrationMetadata
+    public sealed partial class Person : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddContact));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Person));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803221252595_AddContact"; }
+            get { return "201803261111187_Person"; }
         }
         
         string IMigrationMetadata.Source

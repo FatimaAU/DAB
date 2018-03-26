@@ -4,13 +4,14 @@ namespace PersonKartotek
 {
     public class Address
     {
-        //public Address(string streetName, int houseNumber, string country, City city)
-        //{
-        //    StreetName = streetName;
-        //    HouseNumber = houseNumber;
-        //    City = city;
-        //    Country = country;
-        //}
+        public Address() { }
+        public Address(string streetName, int houseNumber, string type, string country, City city)
+        {
+            StreetName = streetName;
+            HouseNumber = houseNumber;
+            City = city;
+            Country = country;
+        }
         [Key]
         public int AddressId { get; set; }
         public string StreetName { get; set; }

@@ -3,7 +3,7 @@ namespace PersonKartotek.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddMiddleName : DbMigration
+    public partial class Person : DbMigration
     {
         public override void Up()
         {
