@@ -5,10 +5,11 @@ namespace PersonKartotek
     public class Telephone
     {
         public Telephone() { }
-        public Telephone(string number, string teleCompany, string Type)
+        public Telephone(string number, string teleCompany, string type)
         {
             Number = number;
             TeleCompany = teleCompany;
+            Type = type;
             //Contact = contact;
         }
         [Key]

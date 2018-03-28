@@ -9,6 +9,7 @@ namespace PersonKartotek
         {
             StreetName = streetName;
             HouseNumber = houseNumber;
+            type = Type;
             City = city;
             Country = country;
         }
