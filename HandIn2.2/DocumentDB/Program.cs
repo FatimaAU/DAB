@@ -47,17 +47,18 @@ namespace HandIn2._2
             await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DatabaseId),
                 new DocumentCollection {Id = DatabaseId});
 
-            Menu();
+            Menu(); 
         }
 
-        private async Task Menu()
+        private void Menu()
         {
             Repository Repository = new Repository(client, p);
 
+            //Stay in menu
             while (true)
             {
                 Console.WriteLine("Select task, 'C'reate, 'R'ead, 'U'pdate, 'D'elete. Q to kvit:");
-                string selection = Console.ReadLine().ToUpper();
+                string selection = Console.ReadLine().ToUpper();    //Get input and capitalize input
                 switch (selection)
                 {
                     case "C":
