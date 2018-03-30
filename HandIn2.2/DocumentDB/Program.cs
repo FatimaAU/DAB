@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
@@ -55,7 +56,7 @@ namespace HandIn2._2
 
             while (true)
             {
-                Console.WriteLine("Select task, 'C'reate, 'R'ead, 'U'pdate, 'D'elete:");
+                Console.WriteLine("Select task, 'C'reate, 'R'ead, 'U'pdate, 'D'elete. Q to kvit:");
                 string selection = Console.ReadLine().ToUpper();
                 switch (selection)
                 {
@@ -70,6 +71,9 @@ namespace HandIn2._2
                         break;
                     case "D":
                         Repository.DeletePerson();
+                        break;
+                    case "Q":
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Only acceptable inputs are: 'C' 'R' 'U' 'D'");
