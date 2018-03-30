@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
@@ -10,10 +11,9 @@ namespace HandIn2._2
     {
         private const string EndpointUrl = "https://localhost:8081";
 
-        private const string PrimaryKey =
-            "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+        private const string PrimaryKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";   //Key for local DB emulator
 
-        public string DatabaseId = "PersonKartotek";
+        public string DatabaseId = "PersonKartotek";    //Name of database
 
         public DocumentClient client;
         static public Program p;
@@ -40,6 +40,7 @@ namespace HandIn2._2
             
         }
 
+        //Creates database and collection if it doesn't exist already. Then runs the Menu
         private async Task InitializeDB()
         {
             this.client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
@@ -47,30 +48,34 @@ namespace HandIn2._2
             await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DatabaseId),
                 new DocumentCollection {Id = DatabaseId});
 
-            Menu();
+            Menu(); 
         }
 
-        private async Task Menu()
+        private void Menu()
         {
             Repository Repository = new Repository(client, p);
 
+            //Stay in menu
             while (true)
             {
-                Console.WriteLine("Select task, 'C'reate, 'R'ead, 'U'pdate, 'D'elete:");
-                string selection = Console.ReadLine().ToUpper();
+                Console.WriteLine("Select task, 'C'reate, 'R'ead, 'U'pdate, 'D'elete. Q to kvit:");
+                string selection = Console.ReadLine().ToUpper();    //Get input and capitalize input
                 switch (selection)
                 {
                     case "C":
-                        await Repository.CreatePerson();
+                        Repository.CreatePerson();
                         break;
                     case "R":
-                        await Repository.ReadPerson(DatabaseId, DatabaseId);
+                        Repository.ReadPerson(DatabaseId, DatabaseId);
                         break;
                     case "U":
-                        await Repository.UpdatePerson();
+                        Repository.UpdatePerson();
                         break;
                     case "D":
-                        await Repository.DeletePerson();
+                        Repository.DeletePerson();
+                        break;
+                    case "Q":
+                        Environment.Exit(0);    //Quit program
                         break;
                     default:
                         Console.WriteLine("Only acceptable inputs are: 'C' 'R' 'U' 'D'");

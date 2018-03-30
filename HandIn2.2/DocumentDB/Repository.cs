@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
@@ -12,7 +11,6 @@ namespace HandIn2._2
     public class Repository
     {
         public Program Program;
-        //private Person newPerson;
         private readonly DocumentClient _client;
 
         public Repository(DocumentClient client, Program program)
@@ -26,6 +24,7 @@ namespace HandIn2._2
             AddToDatabase(InitPerson());
         }
 
+        // Makes a Person object for later use
         private Person InitPerson()
         {
             Person newPerson = new Person();
@@ -73,7 +72,7 @@ namespace HandIn2._2
 
             Console.WriteLine("Enter optional address (press enter if no optionals or any other key if optionals)");
 
-            int counter = 0;
+            int counter = 0;    //Counter for alternative addresses
 
             List<Address> altAddresses = null;
 
@@ -112,9 +111,9 @@ namespace HandIn2._2
 
             if (altAddresses != null)
             {
-                counter = 0;
-                Address[] addressArray = altAddresses.ToArray();
-                newPerson.Contact.AlternateAddresses = addressArray;
+                counter = 0;    //Reset counter for telephone
+                Address[] addressArray = altAddresses.ToArray();    //Convert list to array
+                newPerson.Contact.AlternateAddresses = addressArray;    //Add array to newperson
             }
 
             do
@@ -134,7 +133,7 @@ namespace HandIn2._2
                 Console.WriteLine("Enter alternative number (or press enter to exit)");
 
 
-            } while (!string.IsNullOrEmpty(Console.ReadLine()));
+            } while (!string.IsNullOrEmpty(Console.ReadLine()));    //exit loop when no new alternative is wanted
 
             if (altAddresses != null)
             {
@@ -153,7 +152,7 @@ namespace HandIn2._2
             // Set some common query options
             FeedOptions queryOptions = new FeedOptions {MaxItemCount = -1};
 
-            // Here we find the Andersen family via its LastName
+            // Here we find the Person via its ID
             IQueryable<Person> personQuery = _client.CreateDocumentQuery<Person>(
                     UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), queryOptions)
                 .Where(p => p.Id == personID);
@@ -167,14 +166,14 @@ namespace HandIn2._2
 
         public async Task UpdatePerson()
         {
-            var newPerson = InitPerson();
+            var newPerson = InitPerson();   //Create a new Person
             try
             {
-                await ReplacePersonDocument(Program.DatabaseId, Program.DatabaseId, newPerson.Id, newPerson);
+                await ReplacePersonDocument(Program.DatabaseId, Program.DatabaseId, newPerson.Id, newPerson);   //Replace old person with new one
             }
             catch (Exception e)
             {
-                Console.WriteLine("Person did not exist. Nothing has been updated.");
+                Console.WriteLine("Person did not exist. Nothing has been updated.");   //When trying to update a person that does not exist
             }
         }
 
@@ -185,13 +184,16 @@ namespace HandIn2._2
 
             try
             {
-                await DeletePersonDocument(Program.DatabaseId, Program.DatabaseId, personId);
+               await DeletePersonDocument(Program.DatabaseId, Program.DatabaseId, personId);    //Deletes Person (document) with the wanted ID
             }
             catch (Exception e)
             {
-                Console.WriteLine("Person does not exist. Nothing has been deleted");
+                Console.WriteLine("Person does not exist. Nothing has been deleted");   //When Person doesn't exist
             }
         }
+
+
+        //The following methods works directly with the database
 
         private async Task ReplacePersonDocument(string databaseName, string collectionName, string personId, Person updatedPerson)
         {
@@ -202,7 +204,6 @@ namespace HandIn2._2
 
         private async Task AddToDatabase(Person person)
         {
-           Console.WriteLine("Adding person to database\n");
            await CreatePersonDocumentIfNotExists(Program.DatabaseId, Program.DatabaseId, person);
         }
 
@@ -218,7 +219,7 @@ namespace HandIn2._2
             {
                 await _client.ReadDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName,
                     person.Id));
-                Console.WriteLine("Found {0}", person.Id);
+                Console.WriteLine("Person {0} exists already. Nothing created.", person.Id);
             }
             catch (DocumentClientException de)
             {
