@@ -30,11 +30,12 @@ namespace PersonKartotek
                 City blacktown = new City("Blacktown", "CF3 7QG");
                 City Kirkjubøur = new City("Kirkjubøur", "175");
                 City BobTown = new City("BobTown", "13013");
+                City Stockholm = new City("Stockholm", "11121");
                 Address address1 = new Address("Kalendervej", 39, "Private Address", "Denmark", aarhusV);
                 Address address2 = new Address("Southend Avenue", 70, "Work Address", "England", blacktown);
                 Address address3 = new Address("Gamlivegur", 16, "Summer House", "Faroe Islands", Kirkjubøur);
-                Address address4 = new Address("Bobstreet", 130, "Summer House", "Denmark", BobTown);
-                Address address5 = new Address("Bobstreet", 130, "Summer House", "Denmark", BobTown);
+                Address address4 = new Address("Bobstreet", 130, "Private Address", "Denmark", BobTown);
+                Address address5 = new Address("Norrmalm", 49, "Summer House", "Sweden", Stockholm);
                 MainAddress mainAddress = new MainAddress(address1);
                 MainAddress mainAddress2 = new MainAddress(address4);
                 AlternativeAddress altAddress1 = new AlternativeAddress(address2);
@@ -53,20 +54,13 @@ namespace PersonKartotek
                 Contact timContact = new Contact("Tim@Hotmail.com", timTelephones, mainAddress, timAltAddresses);
 
                 Repository myRepository = new Repository();
-                //myRepository.addPerson("Bob", "Martin", "Jensen", bobContact);
-                //System.Threading.Thread.Sleep(1000);
-                //myRepository.addPerson("Tim", "Martin", "Jensen", timContact);
-                myRepository.updateContact("Bob@hotmail.com", "Bob2@hotmail.com", bobTelephones2, mainAddress2, bobAltAddresses2);
-                //myRepository.updatePerson("Bob", "Jensen", "Bob", "Martuuuun", "Jensen", bobContact2);
-                //myRepository.readCity();
-
-                //myRepository.deletePerson("Bob", "Jensen");
-                //myRepository.deleteAddress("Kalendervej", 39);
-                //myRepository.readCity();
-                //myRepository.readContact();
-                //myRepository.readTelephone();
-
-
+                myRepository.addPerson("Bob", "Martin", "Jensen", bobContact);
+                myRepository.addPerson("Tim", "Martin", "Jensen", timContact);
+                myRepository.readPerson();
+                myRepository.updatePerson("Bob", "Jensen", "Bob", "Martin", "Jensen", bobContact2);
+                myRepository.readPerson();
+                myRepository.deletePerson("Bob", "Jensen");
+                myRepository.readPerson();
 
                 Console.WriteLine("Press any key to exit...");
                 Console.ReadKey();

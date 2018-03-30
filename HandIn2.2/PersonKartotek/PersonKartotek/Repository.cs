@@ -18,7 +18,7 @@ namespace PersonKartotek
                 db.Addresses.Add(address);
                 db.SaveChanges();
 
-                Console.WriteLine("Added Address\n");
+                Console.WriteLine("Added Address: " + address.StreetName + " " + address.HouseNumber + " to the database\n");
 
                 
             }
@@ -37,6 +37,7 @@ namespace PersonKartotek
                 {
                     Console.WriteLine(item.Type + ": " + item.StreetName + item.HouseNumber + item.City.CityName + item.City.ZipCode + item.Country);
                 }
+                Console.WriteLine("\n");
             }
         }
 
@@ -63,6 +64,7 @@ namespace PersonKartotek
                 {
                     Console.WriteLine(e);
                 }
+                Console.WriteLine("\n");
             }
         }
 
@@ -95,18 +97,18 @@ namespace PersonKartotek
                 db.SaveChanges();
                 Console.WriteLine("Updated Contact from " + removeStreetName + " " + removeHouseNumber + " to " + streetName + " " + houseNumber);
             }
+            Console.WriteLine("\n");
         }
 
         public void addAlternativeAddress(List<Contact> contacts, Address address)
         {
             using (var db = new KartotekContext())
             {
-                var alternativeAddress = new AlternativeAddress (/*contacts, */address) { /*Contacts = contacts, */Address = address};
+                var alternativeAddress = new AlternativeAddress (address) {Address = address};
                 db.AlternativeAddresses.Add(alternativeAddress);
                 db.SaveChanges();
 
-                Console.WriteLine("Added AltAddress\n");
-                
+                Console.WriteLine("Added AltAddress: " + alternativeAddress.Address.StreetName + " " + alternativeAddress.Address.HouseNumber + " to the database\n");
             }
         }
 
@@ -135,7 +137,7 @@ namespace PersonKartotek
                 {
                     Console.WriteLine(item.CityName + " " + item.ZipCode);
                 }
-                
+                Console.WriteLine("\n");
             }
         }
 
@@ -162,6 +164,7 @@ namespace PersonKartotek
                 {
                     Console.WriteLine(e);
                 }
+                Console.WriteLine("\n");
             }
         }
 
@@ -191,7 +194,7 @@ namespace PersonKartotek
                 var city = new City(cityName, zipCode) { CityName = cityName, ZipCode = zipCode };
                 db.Cities.Add(city);
                 db.SaveChanges();
-                Console.WriteLine("Updated Contact from " + removeCityName + " to " + cityName);
+                Console.WriteLine("Updated Contact from " + removeCityName + " to " + cityName + "\n");
             }
         }
 
@@ -203,9 +206,7 @@ namespace PersonKartotek
                 db.Contacts.Add(contact);
                 db.SaveChanges();
 
-                Console.WriteLine("Added Contact\n");
-
-                
+                Console.WriteLine("Added Contact: " + contact.Email + " to the database\n");
             }
         }
 
@@ -223,7 +224,7 @@ namespace PersonKartotek
                     int totalAddresses = item.AlternativeAddresses.Count + 1;
                     Console.WriteLine("Email: " + item.Email + "\t Telephones: " + item.Telephones.Count + "\t Addresses: " + totalAddresses);
                 }
-
+                Console.WriteLine("\n");
             }
         }
 
@@ -250,6 +251,7 @@ namespace PersonKartotek
                 {
                     Console.WriteLine(e);
                 }
+                Console.WriteLine("\n");
             }
         }
 
@@ -280,7 +282,7 @@ namespace PersonKartotek
                 db.Contacts.Add(contact);
                 db.SaveChanges();
 
-                Console.WriteLine("Updated Contact from " + deleteEmail + " to " + addEmail);
+                Console.WriteLine("Updated Contact from " + deleteEmail + " to " + addEmail + "\n");
             }
         }
 
@@ -292,16 +294,7 @@ namespace PersonKartotek
                 db.MainAddresses.Add(mainAddress);
                 db.SaveChanges();
 
-                Console.WriteLine("Added MainAddress\n");
-                //var query = from b in db.MainAddresses
-                //    orderby b.Address.City.CityName
-                //    select b;
-
-                //Console.WriteLine("All cities in the database:");
-                //foreach (var item in query)
-                //{
-                //    Console.WriteLine();
-                //}
+                Console.WriteLine("Added MainAddress: " + address.StreetName + " " + address.HouseNumber + " to the database\n");
             }
         }
 
@@ -326,11 +319,25 @@ namespace PersonKartotek
                     orderby p.FirstName
                     select p;
 
-                Console.WriteLine("All people in the database:");
+                Console.WriteLine("All people in the database:\n");
                 foreach (var item in query)
                 {
-                    Console.WriteLine(item.FirstName + " " + item.MiddleName + " " + item.LastName);
+                    Console.WriteLine(item.FirstName + " " + item.MiddleName + " " + item.LastName + "\t " + item.Contact.Email + 
+                    "\nMainAddress: " + item.Contact.MainAddress.Address.StreetName + " " + item.Contact.MainAddress.Address.HouseNumber + "\n");
+                    Console.WriteLine("Alternative addresses:");
+                    foreach (var address in item.Contact.AlternativeAddresses)
+                    {
+                        Console.WriteLine("\t" + address.Address.Type + ": " + address.Address.StreetName + " " + address.Address.HouseNumber);
+                    }
+                    Console.WriteLine("Telephones:");
+                    foreach (var phone in item.Contact.Telephones)
+                    {
+                        Console.WriteLine("\t" + phone.Type + ": " + phone.Number + " " + phone.TeleCompany);
+                    }
+                    Console.WriteLine("\n\n");
+                    
                 }
+                Console.WriteLine("\n");
             }
         }
 
@@ -356,6 +363,7 @@ namespace PersonKartotek
                 {
                     Console.WriteLine(e);
                 }
+                Console.WriteLine("\n");
             }
         }
 
@@ -398,7 +406,7 @@ namespace PersonKartotek
                 db.Telephones.Add(telephone);
                 db.SaveChanges();
 
-                Console.WriteLine("Added Telephone\n");
+                Console.WriteLine("Added Telephone: " + telephone.Number + " to the database\n");
 
             }
         }
@@ -416,7 +424,7 @@ namespace PersonKartotek
                 {
                     Console.WriteLine(item.Type + ": " + item.Number + " " + item.TeleCompany);
                 }
-
+                Console.WriteLine("\n");
             }
         }
 
@@ -443,6 +451,7 @@ namespace PersonKartotek
                 {
                     Console.WriteLine(e);
                 }
+                Console.WriteLine("\n");
             }
         }
 
@@ -476,8 +485,6 @@ namespace PersonKartotek
                 Console.WriteLine("Updated Telephone from " + deleteNumber + " to " + addNumber + "\n");
             }
         }
-
-
     }
 }
 
