@@ -157,7 +157,7 @@ namespace HandIn2._2
                     UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), queryOptions)
                 .Where(p => p.Id == personID);
 
-            // The query is executed synchronously here, but can also be executed asynchronously via the IDocumentQuery<T> interface
+            // Wanted person is now in PersonQuery
             foreach (Person person in personQuery)
             {
                 Console.WriteLine("\tRead {0}", person);
