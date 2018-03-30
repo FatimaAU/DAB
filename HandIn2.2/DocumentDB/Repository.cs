@@ -12,7 +12,6 @@ namespace HandIn2._2
     public class Repository
     {
         public Program Program;
-        //private Person newPerson;
         private readonly DocumentClient _client;
 
         public Repository(DocumentClient client, Program program)
@@ -185,7 +184,7 @@ namespace HandIn2._2
 
             try
             {
-                await DeletePersonDocument(Program.DatabaseId, Program.DatabaseId, personId);
+               await DeletePersonDocument(Program.DatabaseId, Program.DatabaseId, personId);
             }
             catch (Exception e)
             {
@@ -202,7 +201,6 @@ namespace HandIn2._2
 
         private async Task AddToDatabase(Person person)
         {
-           Console.WriteLine("Adding person to database\n");
            await CreatePersonDocumentIfNotExists(Program.DatabaseId, Program.DatabaseId, person);
         }
 
@@ -218,7 +216,7 @@ namespace HandIn2._2
             {
                 await _client.ReadDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName,
                     person.Id));
-                Console.WriteLine("Found {0}", person.Id);
+                Console.WriteLine("Person {0} exists already. Nothing created.", person.Id);
             }
             catch (DocumentClientException de)
             {

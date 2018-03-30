@@ -10,8 +10,7 @@ namespace HandIn2._2
     {
         private const string EndpointUrl = "https://localhost:8081";
 
-        private const string PrimaryKey =
-            "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+        private const string PrimaryKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
 
         public string DatabaseId = "PersonKartotek";
 
@@ -61,16 +60,16 @@ namespace HandIn2._2
                 switch (selection)
                 {
                     case "C":
-                        await Repository.CreatePerson();
+                        Repository.CreatePerson();
                         break;
                     case "R":
-                        await Repository.ReadPerson(DatabaseId, DatabaseId);
+                        Repository.ReadPerson(DatabaseId, DatabaseId);
                         break;
                     case "U":
-                        await Repository.UpdatePerson();
+                        Repository.UpdatePerson();
                         break;
                     case "D":
-                        await Repository.DeletePerson();
+                        Repository.DeletePerson();
                         break;
                     default:
                         Console.WriteLine("Only acceptable inputs are: 'C' 'R' 'U' 'D'");
