@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace PersonKartotek
 {
@@ -55,12 +56,12 @@ namespace PersonKartotek
 
                 Repository myRepository = new Repository();
                 myRepository.addPerson("Bob", "Martin", "Jensen", bobContact);
-                myRepository.addPerson("Tim", "Martin", "Jensen", timContact);
+                //myRepository.addPerson("Tim", "Martin", "Jensen", timContact);
                 myRepository.readPerson();
-                myRepository.updatePerson("Bob", "Jensen", "Bob", "Martin", "Jensen", bobContact2);
-                myRepository.readPerson();
-                myRepository.deletePerson("Bob", "Jensen");
-                myRepository.readPerson();
+                ////myRepository.updatePerson("Bob", "Jensen", "Bob", "Martin", "Jensen", bobContact2);
+                //myRepository.readPerson();
+                ////myRepository.deletePerson("Bob", "Jensen");
+                //myRepository.readPerson();
 
                 Console.WriteLine("Press any key to exit...");
                 Console.ReadKey();
