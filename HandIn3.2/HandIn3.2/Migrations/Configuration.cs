@@ -4,15 +4,16 @@ namespace HandIn3._2.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using HandIn3._2.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<HandIn3._2.KartotekContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<HandIn3._2.Models.HandIn3_2Context>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(HandIn3._2.KartotekContext context)
+        protected override void Seed(HandIn3._2.Models.HandIn3_2Context context)
         {
             //  This method will be called after migrating to the latest version.
 
