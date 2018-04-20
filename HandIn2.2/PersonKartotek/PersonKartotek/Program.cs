@@ -56,7 +56,7 @@ namespace PersonKartotek
 
                 Repository myRepository = new Repository();
                 myRepository.addPerson("Bob", "Martin", "Jensen", bobContact);
-                //myRepository.addPerson("Tim", "Martin", "Jensen", timContact);
+                myRepository.addPerson("Tim", "Martin", "Jensen", timContact);
                 myRepository.readPerson();
                 ////myRepository.updatePerson("Bob", "Jensen", "Bob", "Martin", "Jensen", bobContact2);
                 //myRepository.readPerson();

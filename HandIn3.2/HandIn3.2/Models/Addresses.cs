@@ -24,7 +24,7 @@ namespace HandIn3._2
 
         public string Country { get; set; }
 
-        public int? City_CityId { get; set; }
+        public int? Cities_CityId { get; set; }
 
         public string Type { get; set; }
 

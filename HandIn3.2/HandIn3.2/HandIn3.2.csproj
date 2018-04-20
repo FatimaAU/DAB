@@ -170,6 +170,10 @@
     <Compile Include="Migrations\201804191101465_Initial.Designer.cs">
       <DependentUpon>201804191101465_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804201004403_Cities.cs" />
+    <Compile Include="Migrations\201804201004403_Cities.Designer.cs">
+      <DependentUpon>201804201004403_Cities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Addresses.cs" />
     <Compile Include="Models\AlternativeAddresses.cs" />
@@ -209,7 +213,6 @@
     <Compile Include="Models\Cities.cs" />
     <Compile Include="Models\Contacts.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="C__MigrationHistory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -291,6 +294,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201804191101465_Initial.resx">
       <DependentUpon>201804191101465_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804201004403_Cities.resx">
+      <DependentUpon>201804201004403_Cities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
