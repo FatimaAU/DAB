@@ -174,6 +174,30 @@
     <Compile Include="Migrations\201804201004403_Cities.Designer.cs">
       <DependentUpon>201804201004403_Cities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804230805588_ItWorks.cs" />
+    <Compile Include="Migrations\201804230805588_ItWorks.Designer.cs">
+      <DependentUpon>201804230805588_ItWorks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804230818070_hey.cs" />
+    <Compile Include="Migrations\201804230818070_hey.Designer.cs">
+      <DependentUpon>201804230818070_hey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804230823112_hey1.cs" />
+    <Compile Include="Migrations\201804230823112_hey1.Designer.cs">
+      <DependentUpon>201804230823112_hey1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804230838026_hey2.cs" />
+    <Compile Include="Migrations\201804230838026_hey2.Designer.cs">
+      <DependentUpon>201804230838026_hey2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804230919553_hey3.cs" />
+    <Compile Include="Migrations\201804230919553_hey3.Designer.cs">
+      <DependentUpon>201804230919553_hey3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804230930162_hey4.cs" />
+    <Compile Include="Migrations\201804230930162_hey4.Designer.cs">
+      <DependentUpon>201804230930162_hey4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Addresses.cs" />
     <Compile Include="Models\AlternativeAddresses.cs" />
@@ -297,6 +321,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804201004403_Cities.resx">
       <DependentUpon>201804201004403_Cities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804230805588_ItWorks.resx">
+      <DependentUpon>201804230805588_ItWorks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804230818070_hey.resx">
+      <DependentUpon>201804230818070_hey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804230823112_hey1.resx">
+      <DependentUpon>201804230823112_hey1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804230838026_hey2.resx">
+      <DependentUpon>201804230838026_hey2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804230919553_hey3.resx">
+      <DependentUpon>201804230919553_hey3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804230930162_hey4.resx">
+      <DependentUpon>201804230930162_hey4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
