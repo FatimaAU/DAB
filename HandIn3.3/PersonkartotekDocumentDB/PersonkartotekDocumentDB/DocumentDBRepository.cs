@@ -9,6 +9,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Results;
 using PersonkartotekDocumentDB.Models;
 
 namespace PersonkartotekDocumentDB
@@ -27,6 +30,88 @@ namespace PersonkartotekDocumentDB
             CreateCollectionIfNotExistsAsync().Wait();
         }
 
+
+        public static async Task<IEnumerable<T>> Get(Expression<Func<T, bool>> predicate)
+        {
+            IDocumentQuery<T> query = client.CreateDocumentQuery<T>(
+                    UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId))
+                .Where(predicate)
+                .AsDocumentQuery();
+
+            List<T> results = new List<T>();
+            while (query.HasMoreResults)
+            {
+                results.AddRange(await query.ExecuteNextAsync<T>());
+            }
+
+            return results;
+        }
+
+        public static async Task<IHttpActionResult> Put(PersonDetailDTO person)
+        {
+            //if (id != person.Id)
+            //    return new BadRequestResult(new HttpRequestMessage());
+            try
+            {
+                await client.ReadDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId, person.Id));
+                return new BadRequestResult(new HttpRequestMessage());
+            }
+            catch (DocumentClientException de)
+            {
+                if (de.StatusCode == HttpStatusCode.NotFound)
+                {
+                    await client.CreateDocumentAsync(
+                        UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId), person);
+                    return new OkResult(new HttpRequestMessage());
+                }
+
+                throw;
+            }
+        }
+
+        public static async Task<IHttpActionResult> Post(PersonDetailDTO person)
+        {
+            try
+            {
+                await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId, person.Id), person);
+                return new OkResult(new HttpRequestMessage());
+            }
+            catch (Exception)
+            {
+                return new NotFoundResult(new HttpRequestMessage());
+            }
+        }
+
+        public static async Task<IHttpActionResult> Delete(string id)
+        {
+            try
+            {
+                await client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId, id));
+                return new OkResult(new HttpRequestMessage());
+            }
+            catch (Exception)
+            {
+                return new NotFoundResult(new HttpRequestMessage());
+            }
+        }
+
+
+
+        //public static async Task<Htt<T>> GetItemsAsync(string id)
+        //{
+        //    IDocumentQuery<T> query = client.CreateDocumentQuery<T>(
+        //            UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId))
+        //        .Where(predicate)
+        //        .AsDocumentQuery();
+
+        //    List<T> results = new List<T>();
+        //    while (query.HasMoreResults)
+        //    {
+        //        results.AddRange(await query.ExecuteNextAsync<T>());
+        //    }
+
+        //    return results;
+        //}
         private static async Task CreateDatabaseIfNotExistsAsync()
         {
             try
@@ -67,60 +152,5 @@ namespace PersonkartotekDocumentDB
                 }
             }
         }
-
-        public static async Task<IEnumerable<T>> GetItemsAsync(Expression<Func<T, bool>> predicate)
-        {
-            IDocumentQuery<T> query = client.CreateDocumentQuery<T>(
-                    UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId))
-                .Where(predicate)
-                .AsDocumentQuery();
-
-            List<T> results = new List<T>();
-            while (query.HasMoreResults)
-            {
-                results.AddRange(await query.ExecuteNextAsync<T>());
-            }
-
-            return results;
-        }
-
-        private static async Task CreatePersonDocumentIfNotExists(string databaseName, string collectionName, Person person)
-        {
-            try
-            {
-                await client.ReadDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName,
-                    person.Id));
-                Console.WriteLine("Person {0} exists already. Nothing created.", person.Id);
-            }
-            catch (DocumentClientException de)
-            {
-                if (de.StatusCode == HttpStatusCode.NotFound)
-                {
-                    await client.CreateDocumentAsync(
-                        UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), person);
-                    Console.WriteLine("Created Person {0}", person.Id);
-                }
-                else
-                {
-                    throw;
-                }
-            }
-        }
-
-        //public static async Task<Htt<T>> GetItemsAsync(string id)
-        //{
-        //    IDocumentQuery<T> query = client.CreateDocumentQuery<T>(
-        //            UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId))
-        //        .Where(predicate)
-        //        .AsDocumentQuery();
-
-        //    List<T> results = new List<T>();
-        //    while (query.HasMoreResults)
-        //    {
-        //        results.AddRange(await query.ExecuteNextAsync<T>());
-        //    }
-
-        //    return results;
-        //}
     }
 }

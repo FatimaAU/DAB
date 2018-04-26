@@ -20,7 +20,8 @@ namespace PersonkartotekDocumentDB
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            DocumentDBRepository<Person>.Initialize();
+            DocumentDBRepository<PersonSimpleDTO>.Initialize();
+            DocumentDBRepository<PersonDetailDTO>.Initialize();
         }
     }
 }

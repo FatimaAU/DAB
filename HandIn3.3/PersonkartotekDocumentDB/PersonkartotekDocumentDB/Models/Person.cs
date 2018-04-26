@@ -10,7 +10,15 @@ using PersonkartotekDocumentDB.Models;
 
 namespace PersonkartotekDocumentDB.Models
 {
-    public class Person
+    public class PersonSimpleDTO
+    {
+        public string Id { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+    }
+
+    public class PersonDetailDTO
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
@@ -25,4 +33,5 @@ namespace PersonkartotekDocumentDB.Models
             return JsonConvert.SerializeObject(this);
         }
     }
+
 }
