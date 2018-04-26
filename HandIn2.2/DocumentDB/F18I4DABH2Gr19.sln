@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentDB", "DocumentDB.csproj", "{CBC9D083-7A05-4924-AA8D-E4C5BEA1A257}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandIn2.2", "HandIn2.2.csproj", "{CBC9D083-7A05-4924-AA8D-E4C5BEA1A257}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
