@@ -47,10 +47,9 @@ namespace PersonkartotekDocumentDB
             return results;
         }
 
-        public static async Task<IHttpActionResult> Put(PersonDetailDTO person)
+
+        public static async Task<IHttpActionResult> Post(PersonDetailDTO person)
         {
-            //if (id != person.Id)
-            //    return new BadRequestResult(new HttpRequestMessage());
             try
             {
                 await client.ReadDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId, person.Id));
@@ -68,8 +67,7 @@ namespace PersonkartotekDocumentDB
                 throw;
             }
         }
-
-        public static async Task<IHttpActionResult> Post(PersonDetailDTO person)
+        public static async Task<IHttpActionResult> Put(PersonDetailDTO person)
         {
             try
             {
@@ -96,22 +94,6 @@ namespace PersonkartotekDocumentDB
         }
 
 
-
-        //public static async Task<Htt<T>> GetItemsAsync(string id)
-        //{
-        //    IDocumentQuery<T> query = client.CreateDocumentQuery<T>(
-        //            UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId))
-        //        .Where(predicate)
-        //        .AsDocumentQuery();
-
-        //    List<T> results = new List<T>();
-        //    while (query.HasMoreResults)
-        //    {
-        //        results.AddRange(await query.ExecuteNextAsync<T>());
-        //    }
-
-        //    return results;
-        //}
         private static async Task CreateDatabaseIfNotExistsAsync()
         {
             try
