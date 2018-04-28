@@ -102,7 +102,7 @@ namespace PersonkartotekDocumentDB
             }
             catch (DocumentClientException e)
             {
-                if (e.StatusCode == System.Net.HttpStatusCode.NotFound)
+                if (e.StatusCode == HttpStatusCode.NotFound)
                 {
                     await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
                 }
@@ -121,7 +121,7 @@ namespace PersonkartotekDocumentDB
             }
             catch (DocumentClientException e)
             {
-                if (e.StatusCode == System.Net.HttpStatusCode.NotFound)
+                if (e.StatusCode == HttpStatusCode.NotFound)
                 {
                     await client.CreateDocumentCollectionAsync(
                         UriFactory.CreateDatabaseUri(DatabaseId),
