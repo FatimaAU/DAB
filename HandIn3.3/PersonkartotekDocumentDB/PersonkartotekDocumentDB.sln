@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonkartotekDocumentDB", "PersonkartotekDocumentDB\PersonkartotekDocumentDB.csproj", "{CE4CBA07-BABF-4EBD-B60D-5A5AF612DC93}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE4CBA07-BABF-4EBD-B60D-5A5AF612DC93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE4CBA07-BABF-4EBD-B60D-5A5AF612DC93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE4CBA07-BABF-4EBD-B60D-5A5AF612DC93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE4CBA07-BABF-4EBD-B60D-5A5AF612DC93}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {38DE2AF1-76C9-4D8E-ABD2-3D8B958E37D1}
+	EndGlobalSection
+EndGlobal
