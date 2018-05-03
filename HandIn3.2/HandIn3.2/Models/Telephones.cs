@@ -8,8 +8,8 @@ namespace HandIn3._2
 
     public partial class Telephones
     {
-        [StringLength(128)]
-        public string Contact_Email { get; set; }
+        //[StringLength(128)]
+        //public string Contact_Email { get; set; }
 
         public string Number { get; set; }
 
@@ -19,7 +19,7 @@ namespace HandIn3._2
 
         [Key]
         public int TelephoneId { get; set; }
-
-        public virtual Contacts Contacts { get; set; }
+        //[Required]
+        //public virtual Contacts Contacts { get; set; }
     }
 }

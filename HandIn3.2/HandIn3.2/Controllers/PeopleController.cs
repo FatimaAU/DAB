@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -18,9 +19,27 @@ namespace HandIn3._2.Controllers
         private HandIn3_2Context db = new HandIn3_2Context();
 
         // GET: api/People
-        public IQueryable<People> GetPeople()
+        public IQueryable<PeopleDTO> GetPeople()
         {
-            return db.People;
+            var people = from b in db.People
+                select new PeopleDTO()
+                {
+                    PersonId = b.PersonId,
+                    //AddressType = b.Contacts.MainAddresses.Addresses.Type,
+                    //CityName = b.Contacts.MainAddresses.Addresses.Cities.CityName,
+                    //Country = b.Contacts.MainAddresses.Addresses.Country,
+                    Email = b.Contacts.Email,
+                    FirstName = b.FirstName,
+                    //HouseNumber = b.Contacts.MainAddresses.Addresses.HouseNumber,
+                    LastName = b.LastName,
+                    MiddleName = b.MiddleName,
+                    //TelephoneNumber = b.Contacts.Telephones.Number,
+                    //StreetName = b.Contacts.MainAddresses.Addresses.StreetName,
+                    //TeleCompany = b.Contacts.Telephones.TeleCompany,
+                    //TelephoneType = b.Contacts.Telephones.Type,
+                    //ZipCode = b.Contacts.MainAddresses.Addresses.Cities.ZipCode
+                };
+            return people;
         }
 
         // GET: api/People/5
@@ -83,7 +102,22 @@ namespace HandIn3._2.Controllers
             db.People.Add(people);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = people.PersonId }, people);
+            db.Entry(people).Reference(x => x.Contacts).Load();
+
+            var dto = new PeopleDTO()
+            {
+                PersonId = people.PersonId,
+                //AddressType = b.Contacts.MainAddresses.Addresses.Type,
+                //CityName = b.Contacts.MainAddresses.Addresses.Cities.CityName,
+                //Country = b.Contacts.MainAddresses.Addresses.Country,
+                //Email = people.Contacts.Email,
+                FirstName = people.FirstName,
+                //HouseNumber = b.Contacts.MainAddresses.Addresses.HouseNumber,
+                LastName = people.LastName,
+                MiddleName = people.MiddleName
+            };
+
+            return CreatedAtRoute("DefaultApi", new { id = people.PersonId }, dto);
         }
 
         // DELETE: api/People/5

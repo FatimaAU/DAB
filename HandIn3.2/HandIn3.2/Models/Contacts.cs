@@ -13,13 +13,13 @@ namespace HandIn3._2
         {
             AlternativeAddresses = new HashSet<AlternativeAddresses>();
             People = new HashSet<People>();
-            Telephones = new HashSet<Telephones>();
+            //Telephones = new HashSet<Telephones>();
         }
 
         [Key]
         public string Email { get; set; }
 
-        public int? MainAddress_MainAddressId { get; set; }
+        //public int? MainAddress_MainAddressId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AlternativeAddresses> AlternativeAddresses { get; set; }
@@ -30,6 +30,6 @@ namespace HandIn3._2
         public virtual ICollection<People> People { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Telephones> Telephones { get; set; }
+        public virtual Telephones Telephones { get; set; }
     }
 }

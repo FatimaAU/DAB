@@ -11,17 +11,17 @@ namespace HandIn3._2
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MainAddresses()
         {
-            Contacts = new HashSet<Contacts>();
+            //Contacts = new HashSet<Contacts>();
         }
 
         [Key]
         public int MainAddressId { get; set; }
 
-        public int? Address_AddressId { get; set; }
+        //public int? Address_AddressId { get; set; }
 
         public virtual Addresses Addresses { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contacts> Contacts { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<Contacts> Contacts { get; set; }
     }
 }

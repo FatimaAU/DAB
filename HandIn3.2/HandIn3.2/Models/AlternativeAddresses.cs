@@ -11,10 +11,10 @@ namespace HandIn3._2
         [Key]
         public int AlternativeAddressId { get; set; }
 
-        public int? Address_AddressId { get; set; }
+        //public int? Address_AddressId { get; set; }
 
-        [StringLength(128)]
-        public string Contact_Email { get; set; }
+        //[StringLength(128)]
+        //public string Contact_Email { get; set; }
 
         public virtual Addresses Addresses { get; set; }
 

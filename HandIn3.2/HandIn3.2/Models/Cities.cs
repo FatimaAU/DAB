@@ -11,7 +11,7 @@ namespace HandIn3._2
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cities()
         {
-            Addresses = new HashSet<Addresses>();
+            //Addresses = new HashSet<Addresses>();
         }
 
         public string CityName { get; set; }
@@ -21,7 +21,7 @@ namespace HandIn3._2
         [Key]
         public int CityId { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Addresses> Addresses { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<Addresses> Addresses { get; set; }
     }
 }

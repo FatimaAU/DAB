@@ -11,8 +11,8 @@ namespace HandIn3._2
         [Key]
         public int PersonId { get; set; }
 
-        [StringLength(128)]
-        public string Contact_Email { get; set; }
+        //[StringLength(128)]
+        //public string Contact_Email { get; set; }
 
         public string FirstName { get; set; }
 
