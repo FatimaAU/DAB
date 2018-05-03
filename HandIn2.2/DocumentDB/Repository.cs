@@ -8,24 +8,23 @@ using Microsoft.Azure.Documents.Client;
 
 namespace HandIn2._2
 {
-    public class Repository
+    public static class Repository
     {
-        public Program Program;
-        private readonly DocumentClient _client;
+        private const string EndpointUrl = "https://localhost:8081";
 
-        public Repository(DocumentClient client, Program program)
-        {
-            Program = program;
-            _client = client;
+        private const string PrimaryKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";   //Key for local DB emulator
 
-        }
-        public async Task CreatePerson()
+        private static string DatabaseId = "PersonKartotek";    //Name of database and collection
+
+        private static DocumentClient _client;
+
+        public static async Task CreatePerson()
         {
             AddToDatabase(InitPerson());
         }
 
         // Makes a Person object for later use
-        private Person InitPerson()
+        private static Person InitPerson()
         {
             Person newPerson = new Person();
             newPerson = new Person();
@@ -144,7 +143,7 @@ namespace HandIn2._2
             return newPerson;
         }
 
-        public async Task ReadPerson(string databaseName, string collectionName)
+        public static async Task ReadPerson(string databaseName, string collectionName)
         {
             Console.WriteLine("Enter person ID: ");
             string personID = Console.ReadLine();
@@ -164,12 +163,12 @@ namespace HandIn2._2
             }
         }
 
-        public async Task UpdatePerson()
+        public static async Task UpdatePerson()
         {
             var newPerson = InitPerson();   //Create a new Person
             try
             {
-                await ReplacePersonDocument(Program.DatabaseId, Program.DatabaseId, newPerson.Id, newPerson);   //Replace old person with new one
+                await ReplacePersonDocument(DatabaseId, DatabaseId, newPerson.Id, newPerson);   //Replace old person with new one
             }
             catch (Exception e)
             {
@@ -177,14 +176,14 @@ namespace HandIn2._2
             }
         }
 
-        public async Task DeletePerson()
+        public static async Task DeletePerson()
         {
             Console.WriteLine("Write Person ID for person to delete: ");
             string personId = Console.ReadLine();
 
             try
             {
-               await DeletePersonDocument(Program.DatabaseId, Program.DatabaseId, personId);    //Deletes Person (document) with the wanted ID
+               await DeletePersonDocument(DatabaseId, DatabaseId, personId);    //Deletes Person (document) with the wanted ID
             }
             catch (Exception e)
             {
@@ -195,25 +194,25 @@ namespace HandIn2._2
 
         //The following methods works directly with the database
 
-        private async Task ReplacePersonDocument(string databaseName, string collectionName, string personId, Person updatedPerson)
+        private static async Task ReplacePersonDocument(string databaseName, string collectionName, string personId, Person updatedPerson)
         {
             Console.WriteLine("ReplacePersonDocument()" + personId);
             await _client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, personId), updatedPerson);
             Console.WriteLine("Replaced Person {0}", personId);
         }
 
-        private async Task AddToDatabase(Person person)
+        private static async Task AddToDatabase(Person person)
         {
-           await CreatePersonDocumentIfNotExists(Program.DatabaseId, Program.DatabaseId, person);
+           await CreatePersonDocumentIfNotExists(DatabaseId, DatabaseId, person);
         }
 
-        private async Task DeletePersonDocument(string databaseName, string collectionName, string documentName)
+        private static async Task DeletePersonDocument(string databaseName, string collectionName, string documentName)
         {
             await _client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, documentName));
             Console.WriteLine("Deleted Person {0}", documentName);
         }
 
-        private async Task CreatePersonDocumentIfNotExists(string databaseName, string collectionName, Person person)
+        private static async Task CreatePersonDocumentIfNotExists(string databaseName, string collectionName, Person person)
         {
             try
             {
@@ -234,6 +233,14 @@ namespace HandIn2._2
                     throw;
                 }
             }
+        }
+
+        public static async Task InitializeDB()
+        {
+            _client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
+            await _client.CreateDatabaseIfNotExistsAsync(new Database { Id = DatabaseId });
+            await _client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DatabaseId),
+                new DocumentCollection { Id = DatabaseId });
         }
     }
 }
