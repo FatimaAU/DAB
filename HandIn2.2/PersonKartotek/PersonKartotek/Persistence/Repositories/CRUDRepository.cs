@@ -1,15 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
+using PersonKartotek.Core.Repositories;
+using PersonKartotek.Persistence.Repositories;
 
 namespace PersonKartotek
 {
-    class Repository
+    public class CRUDRepository : Repository<Person>, ICRUD
     {
+        public CRUDRepository(KartotekContext context)
+            : base(context)
+        {
+        }
+
+
         public void addAddress(string streetName, int houseNumber, string type, string country, City city)
         {
             using (var db = new KartotekContext())
@@ -35,7 +44,7 @@ namespace PersonKartotek
                 Console.WriteLine("All addresses in the database:");
                 foreach (var item in query)
                 {
-                    Console.WriteLine(item.Type + ": " + item.StreetName + item.HouseNumber + item.City.CityName + item.City.ZipCode + item.Country);
+                    Console.WriteLine(item.Type + ": " + item.StreetName + " " + item.HouseNumber + " " + item.City.CityName + " " + item.City.ZipCode + " " + item.Country);
                 }
                 Console.WriteLine("\n");
             }
@@ -316,13 +325,13 @@ namespace PersonKartotek
             using (var db = new KartotekContext())
             {
                 var query = from p in db.Persons
-                    orderby p.FirstName
-                    select p;
+                            orderby p.FirstName
+                            select p;
 
                 Console.WriteLine("All people in the database:\n");
                 foreach (var item in query)
                 {
-                    Console.WriteLine(item.FirstName + " " + item.MiddleName + " " + item.LastName + "\t " + item.Contact.Email + 
+                    Console.WriteLine(item.FirstName + " " + item.MiddleName + " " + item.LastName + "\t " + item.Contact.Email +
                     "\nMainAddress: " + item.Contact.MainAddress.Address.StreetName + " " + item.Contact.MainAddress.Address.HouseNumber + "\n");
                     Console.WriteLine("Alternative addresses:");
                     foreach (var address in item.Contact.AlternativeAddresses)
@@ -335,7 +344,7 @@ namespace PersonKartotek
                         Console.WriteLine("\t" + phone.Type + ": " + phone.Number + " " + phone.TeleCompany);
                     }
                     Console.WriteLine("\n\n");
-                    
+
                 }
                 Console.WriteLine("\n");
             }
@@ -484,6 +493,10 @@ namespace PersonKartotek
 
                 Console.WriteLine("Updated Telephone from " + deleteNumber + " to " + addNumber + "\n");
             }
+        }
+        public KartotekContext KartotekContext
+        {
+            get { return Context as KartotekContext; }
         }
     }
 }
