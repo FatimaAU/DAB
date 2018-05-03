@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PersonKartotek
 {
@@ -12,5 +13,7 @@ namespace PersonKartotek
         [Key]
         public int MainAddressId { get; set; }
         public virtual Address Address { get; set; }
+        public virtual List<Contact> Contacts { get; set; }
+
     }
 }

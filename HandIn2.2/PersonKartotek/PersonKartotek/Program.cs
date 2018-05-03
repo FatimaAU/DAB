@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using PersonKartotek.Persistence;
 
 namespace PersonKartotek
 {
@@ -11,7 +12,7 @@ namespace PersonKartotek
     {
         static void Main(string[] args)
         {
-            using (var db = new KartotekContext())
+            using (var unitOfWork = new UnitOfWork(new KartotekContext()))
             {
                 Telephone telephone1 = new Telephone("21351791", "Telia", "Private telephone");
                 Telephone telephone2 = new Telephone("14113673", "Oister", "Work telephone");
@@ -54,17 +55,13 @@ namespace PersonKartotek
                 Contact bobContact2 = new Contact("Bob2@hotmail.com", bobTelephones2, mainAddress2, bobAltAddresses2);
                 Contact timContact = new Contact("Tim@Hotmail.com", timTelephones, mainAddress, timAltAddresses);
 
-                Repository myRepository = new Repository();
-                myRepository.addPerson("Bob", "Martin", "Jensen", bobContact);
-                myRepository.addPerson("Tim", "Martin", "Jensen", timContact);
-                myRepository.readPerson();
-                ////myRepository.updatePerson("Bob", "Jensen", "Bob", "Martin", "Jensen", bobContact2);
-                //myRepository.readPerson();
-                ////myRepository.deletePerson("Bob", "Jensen");
-                //myRepository.readPerson();
-
-                Console.WriteLine("Press any key to exit...");
-                Console.ReadKey();
+                //KartotekContext Context = new KartotekContext();
+                //CRUDRepository myRepository = new CRUDRepository(Context);
+                //myRepository.addPerson("Bob", "Martin", "Jensen", bobContact);
+                //myRepository.addPerson("Tim", "Martin", "Jensen", timContact);
+                //myRepository.addPerson("Bob", "Fisher", "Hansen", bobContact2);
+                unitOfWork.CRUD.readPerson();
+                unitOfWork.Complete();
             }
         }
     }

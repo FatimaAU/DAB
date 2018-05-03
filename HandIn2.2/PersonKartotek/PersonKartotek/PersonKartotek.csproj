@@ -160,6 +160,10 @@
     <Compile Include="Migrations\201803261257078_readCity.Designer.cs">
       <DependentUpon>201803261257078_readCity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804281230545_ListContact.cs" />
+    <Compile Include="Migrations\201804281230545_ListContact.Designer.cs">
+      <DependentUpon>201804281230545_ListContact.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
@@ -249,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803261257078_readCity.resx">
       <DependentUpon>201803261257078_readCity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804281230545_ListContact.resx">
+      <DependentUpon>201804281230545_ListContact.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
