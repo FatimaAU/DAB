@@ -53,7 +53,10 @@
   <ItemGroup>
     <Compile Include="Core\Domain\Address.cs" />
     <Compile Include="Core\Domain\AlternativeAddress.cs" />
-    <Compile Include="Core\Repositories\ICRUD.cs" />
+    <Compile Include="Core\Repositories\IAddressRepository.cs" />
+    <Compile Include="Core\Repositories\IAlternativeAddressRepository.cs" />
+    <Compile Include="Core\Repositories\IContactRepository.cs" />
+    <Compile Include="Core\Repositories\IPersonRepository.cs" />
     <Compile Include="Persistence\KartotekContext.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Core\Domain\Contact.cs" />
@@ -146,11 +149,14 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\Person.cs" />
+    <Compile Include="Persistence\Repositories\AddressRepository.cs" />
+    <Compile Include="Persistence\Repositories\AlternativeAddressRepository.cs" />
+    <Compile Include="Persistence\Repositories\ContactRepository.cs" />
+    <Compile Include="Persistence\Repositories\PersonRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Persistence\Repositories\CRUDRepository.cs" />
     <Compile Include="Core\Domain\Telephone.cs" />
   </ItemGroup>
   <ItemGroup>
