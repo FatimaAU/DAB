@@ -1,3 +1,5 @@
+using PersonKartotek.Persistence;
+
 namespace PersonKartotek.Migrations
 {
     using System;
@@ -5,7 +7,7 @@ namespace PersonKartotek.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<PersonKartotek.KartotekContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<KartotekContext>
     {
         public Configuration()
         {
@@ -13,7 +15,7 @@ namespace PersonKartotek.Migrations
             ContextKey = "PersonKartotek.KartotekContext";
         }
 
-        protected override void Seed(PersonKartotek.KartotekContext context)
+        protected override void Seed(KartotekContext context)
         {
             //  This method will be called after migrating to the latest version.
 

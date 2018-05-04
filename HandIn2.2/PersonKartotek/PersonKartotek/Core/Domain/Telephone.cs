@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
 
-namespace PersonKartotek
+namespace PersonKartotek.Core.Domain
 {
     public class Telephone
     {

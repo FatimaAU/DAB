@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PersonKartotek.Core.Repositories;
 using System.Data.Entity;
+using PersonKartotek.Core.Domain;
 
 namespace PersonKartotek.Persistence.Repositories
 {

@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace PersonKartotek
+namespace PersonKartotek.Core.Domain
 {
     public class Person
     {

@@ -8,7 +8,7 @@ using PersonKartotek.Persistence;
 
 namespace PersonKartotek
 {
-    partial class Program
+    public class Program
     {
         static void Main(string[] args)
         {

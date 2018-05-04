@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PersonKartotek.Persistence.Repositories;
+using PersonKartotek.Core.Repositories;
 
-namespace PersonKartotek.Core.Repositories
+namespace PersonKartotek.Core
 {
     public interface IUnitOfWork : IDisposable
     {

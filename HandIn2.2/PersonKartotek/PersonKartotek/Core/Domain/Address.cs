@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PersonKartotek
+namespace PersonKartotek.Core.Domain
 {
     public class Address
     {

@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
+using PersonKartotek.Core.Domain;
 
-namespace PersonKartotek
+namespace PersonKartotek.Persistence
 {
     public class KartotekContext : DbContext
     {

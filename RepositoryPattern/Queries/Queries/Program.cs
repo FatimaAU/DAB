@@ -10,6 +10,7 @@ namespace Queries
             {
                 // Example1
                 var course = unitOfWork.Courses.Get(1);
+                unitOfWork.
 
                 // Example2
                 var courses = unitOfWork.Courses.GetCoursesWithAuthors(1, 4);

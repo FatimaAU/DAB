@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using PersonKartotek.Core.Domain;
 using PersonKartotek.Core.Repositories;
 
 namespace PersonKartotek.Persistence.Repositories
