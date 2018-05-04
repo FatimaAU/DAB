@@ -1,17 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace PersonKartotek
 {
     public class Telephone
     {
-        public Telephone() { }
-        public Telephone(string number, string teleCompany, string type)
+        public Telephone()
         {
-            Number = number;
-            TeleCompany = teleCompany;
-            Type = type;
-            //Contact = contact;
+
         }
+        
         [Key]
         public int TelephoneId { get; set; }
         public string Number { get; set; }

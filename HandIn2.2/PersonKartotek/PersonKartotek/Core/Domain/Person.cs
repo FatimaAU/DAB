@@ -1,20 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace PersonKartotek
 {
     public class Person
     {
-        public Person() { }
-        public Person(string fName, string mName, string lName,
-            Contact contact)
+        public Person()
         {
-            FirstName = fName;
-            MiddleName = mName;
-            LastName = lName;
-            Contact = contact;
+            Contact = new Contact();
         }
+        
         [Key]
         public int PersonId { get; set; }
         public string FirstName { get; set; }

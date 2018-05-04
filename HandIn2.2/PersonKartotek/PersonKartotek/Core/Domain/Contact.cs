@@ -6,15 +6,11 @@ namespace PersonKartotek
 {
     public class Contact
     {
-        public Contact() { }
-        public Contact(string email, List<Telephone> telephones, MainAddress mainAddress,
-            List<AlternativeAddress> alternativeAddresses)
+        public Contact()
         {
-            Email = email;
-            Telephones = telephones;
-            MainAddress = mainAddress;
-            AlternativeAddresses = alternativeAddresses;
+
         }
+        
         [Key]
         public string Email { get; set; }
         public virtual List<Telephone> Telephones { get; set; }
