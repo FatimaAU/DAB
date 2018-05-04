@@ -9,21 +9,15 @@ namespace HandIn2._2
 
     public class Program
     {
-        private const string EndpointUrl = "https://localhost:8081";
-
-        private const string PrimaryKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";   //Key for local DB emulator
-
-        public string DatabaseId = "PersonKartotek";    //Name of database and collection
-
-        public DocumentClient client;
-        static public Program p;
+        public static Program p;
 
         static void Main(string[] args)
         {
             try
             {
                 p = new Program();
-                p.InitializeDB().Wait();
+                Repository.InitializeDB().Wait();
+                Menu();
             }
             catch (DocumentClientException de)
             {
@@ -36,25 +30,11 @@ namespace HandIn2._2
                 Exception baseException = e.GetBaseException();
                 Console.WriteLine("Error: {0}, Message: {1}", e.Message, baseException.Message);
             }
-            
-            
         }
 
-        //Creates database and collection if it doesn't exist already. Then runs the Menu
-        private async Task InitializeDB()
+
+        private static void Menu()
         {
-            this.client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
-            await this.client.CreateDatabaseIfNotExistsAsync(new Database {Id = DatabaseId});
-            await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DatabaseId),
-                new DocumentCollection {Id = DatabaseId});
-
-            Menu(); 
-        }
-
-        private void Menu()
-        {
-            Repository Repository = new Repository(client, p);
-
             //Stay in menu
             while (true)
             {
@@ -66,7 +46,7 @@ namespace HandIn2._2
                         Repository.CreatePerson();
                         break;
                     case "R":
-                        Repository.ReadPerson(DatabaseId, DatabaseId);
+                        Repository.ReadPerson("PersonKartotek", "PersonKartotek");
                         break;
                     case "U":
                         Repository.UpdatePerson();
