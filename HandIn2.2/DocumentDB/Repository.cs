@@ -24,7 +24,7 @@ namespace HandIn2._2
         }
 
         // Makes a Person object for later use
-        private static Person InitPerson()
+        private static Person InitPerson(string id = "0")
         {
             Person newPerson = new Person();
             newPerson = new Person();
@@ -37,8 +37,22 @@ namespace HandIn2._2
             newPerson.Contact = contact;
             contact.MainAddress = mainAddress;
 
-            Console.Write("Enter id: ");
-            newPerson.Id = Console.ReadLine();
+            if (id == "0")
+            {
+                Console.Write("Enter id: ");
+                newPerson.Id = Console.ReadLine();
+
+                if (PersonExist(newPerson.Id))
+                {
+                    Console.WriteLine($"Person with id {newPerson.Id} already exists\n");
+                    throw new Exception();
+                }
+            }
+            else
+            {
+                newPerson.Id = id;
+
+            }
 
             Console.Write("Enter firstname: ");
             newPerson.FirstName = Console.ReadLine();
@@ -143,10 +157,25 @@ namespace HandIn2._2
             return newPerson;
         }
 
-        public static async Task ReadPerson(string databaseName, string collectionName)
+        private static bool PersonExist(string id)
+        {
+            FeedOptions queryOptions = new FeedOptions { MaxItemCount = -1 };
+
+            // Here we find the Person via its ID
+            IQueryable<Person> personQuery = _client.CreateDocumentQuery<Person>(
+                    UriFactory.CreateDocumentCollectionUri(DatabaseId, DatabaseId), queryOptions)
+                .Where(p => p.Id == id);
+
+            if (personQuery.Count() == 0)
+                return false;
+
+            return true;
+        }
+
+        public static void ReadPerson(string databaseName, string collectionName)
         {
             Console.WriteLine("Enter person ID: ");
-            string personID = Console.ReadLine();
+            string personId = Console.ReadLine();
 
             // Set some common query options
             FeedOptions queryOptions = new FeedOptions {MaxItemCount = -1};
@@ -154,20 +183,32 @@ namespace HandIn2._2
             // Here we find the Person via its ID
             IQueryable<Person> personQuery = _client.CreateDocumentQuery<Person>(
                     UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), queryOptions)
-                .Where(p => p.Id == personID);
+                .Where(p => p.Id == personId);
 
-            // Wanted person is now in PersonQuery
-            foreach (Person person in personQuery)
+            if (personQuery.Count() == 0)
             {
-                Console.WriteLine("\tRead {0}", person);
+                Console.WriteLine($"Person with id {personId} does not exist\n");
+            }
+            else
+            {
+                // Wanted person is now in PersonQuery
+                foreach (Person person in personQuery)
+                    Console.WriteLine("Reading person with id {0}:\n{1}\n", personId, person);
             }
         }
 
         public static async Task UpdatePerson()
         {
-            var newPerson = InitPerson();   //Create a new Person
+            Console.WriteLine("Enter id: ");
+            string id = Console.ReadLine();
+
             try
             {
+                if (!PersonExist(id))
+                    throw new Exception();
+
+                var newPerson = InitPerson(id);
+
                 await ReplacePersonDocument(DatabaseId, DatabaseId, newPerson.Id, newPerson);   //Replace old person with new one
             }
             catch (Exception e)
@@ -196,7 +237,6 @@ namespace HandIn2._2
 
         private static async Task ReplacePersonDocument(string databaseName, string collectionName, string personId, Person updatedPerson)
         {
-            Console.WriteLine("ReplacePersonDocument()" + personId);
             await _client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, personId), updatedPerson);
             Console.WriteLine("Replaced Person {0}", personId);
         }

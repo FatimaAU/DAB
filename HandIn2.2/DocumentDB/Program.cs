@@ -58,7 +58,7 @@ namespace HandIn2._2
                         Environment.Exit(0);    //Quit program
                         break;
                     default:
-                        Console.WriteLine("Only acceptable inputs are: 'C' 'R' 'U' 'D'");
+                        Console.WriteLine("Only acceptable inputs are: 'C' 'R' 'U' 'D' and 'Q'.");
                         break;
                 }
             }
