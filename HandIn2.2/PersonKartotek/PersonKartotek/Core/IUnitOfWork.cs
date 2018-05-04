@@ -1,4 +1,5 @@
 ﻿using System;
+using PersonKartotek.Core.Domain;
 using PersonKartotek.Core.Repositories;
 
 namespace PersonKartotek.Core
@@ -9,6 +10,7 @@ namespace PersonKartotek.Core
         IAddressRepository Address { get; }
         IContactRepository Contact { get; }
         IPersonRepository Person { get; }
+        IRepository<MainAddress> MainAddress { get; }
         int Complete();
     }
 }

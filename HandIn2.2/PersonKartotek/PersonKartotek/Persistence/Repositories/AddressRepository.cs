@@ -16,9 +16,12 @@ namespace PersonKartotek.Persistence.Repositories
         {
         }
 
-        public Address GetCityWithAddresses(int id)
+        public IEnumerable<Address> GetAddressesWithCity(int id)
         {
-            return KartotekContext.Addresses.Include(a => a.City).SingleOrDefault(a => a.AddressId == id);
+            return KartotekContext.Addresses
+                .Where(c => c.City.CityId == id)
+                .OrderBy(c => c.AddressId)
+                .ToList();
         }
 
         public KartotekContext KartotekContext

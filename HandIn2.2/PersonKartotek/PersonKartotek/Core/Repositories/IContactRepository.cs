@@ -9,7 +9,7 @@ namespace PersonKartotek.Core.Repositories
 {
     public interface IContactRepository : IRepository<Contact>
     {
-        Contact GetContactWithAlternativeAddresses(string id);
+        Contact GetContactWithAlternativeAddresses(string email);
         Contact GetContactWithMainAddress(string email);
         Contact GetContactWithTelephones(string email);
     }

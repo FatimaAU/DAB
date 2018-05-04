@@ -9,7 +9,7 @@ namespace PersonKartotek.Core.Repositories
 {
     public interface IAddressRepository : IRepository<Address>
     {
-        Address GetCityWithAddresses(int id);
+        IEnumerable<Address> GetAddressesWithCity(int id);
     }
     
 }

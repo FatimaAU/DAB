@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PersonKartotek.Core;
+using PersonKartotek.Core.Domain;
 using PersonKartotek.Core.Repositories;
 using PersonKartotek.Persistence.Repositories;
 
@@ -20,13 +21,14 @@ namespace PersonKartotek.Persistence
             Address = new AddressRepository(_context);
             Contact = new ContactRepository(_context);
             Person = new PersonRepository(_context);
+            MainAddress = new Repository<MainAddress>(_context);
         }
 
-        public IAlternativeAddressRepository AlternativeAddress { get; private set; }
-        public IAddressRepository Address { get; private set; }
-        public IContactRepository Contact { get; private set; }
-        public IPersonRepository Person { get; private set; }
-
+        public IAlternativeAddressRepository AlternativeAddress { get; }
+        public IAddressRepository Address { get; }
+        public IContactRepository Contact { get; }
+        public IPersonRepository Person { get; }
+        public IRepository<MainAddress> MainAddress { get; }
 
         public int Complete()
         {

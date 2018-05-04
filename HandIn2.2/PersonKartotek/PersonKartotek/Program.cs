@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using PersonKartotek.Core.Domain;
 using PersonKartotek.Persistence;
 
 namespace PersonKartotek
@@ -14,6 +15,25 @@ namespace PersonKartotek
         {
             using (var unitOfWork = new UnitOfWork(new KartotekContext()))
             {
+                var person = new Person();
+
+                person.Contact = new Contact();
+
+                var c = unitOfWork.Address.GetAddressesWithCity(44);
+                foreach (var address in c)
+                {
+                    Console.WriteLine(address.StreetName);
+                }
+
+                person.Contact.MainAddress = unitOfWork.MainAddress.Get(15);
+
+                person.Contact.AlternativeAddresses = unitOfWork.AlternativeAddress.GetAlternativeAddressWithContacts("")
+
+                Console.WriteLine(person.Contact.MainAddress.Address.StreetName);
+                //unitOfWork.Address.Find(b => b.)
+                //    EnvironmentVariableTa
+                //unitOfWork.Address.
+                //person.Contact.MainAddress = unitOfWork.Address.
                 //Telephone telephone1 = new Telephone("21351791", "Telia", "Private telephone");
                 //Telephone telephone2 = new Telephone("14113673", "Oister", "Work telephone");
                 //Telephone telephone3 = new Telephone("75431358", "3", "Mobile telephone");
@@ -55,11 +75,12 @@ namespace PersonKartotek
                 //Contact bobContact2 = new Contact("Bob2@hotmail.com", bobTelephones2, mainAddress2, bobAltAddresses2);
                 //Contact timContact = new Contact("Tim@Hotmail.com", timTelephones, mainAddress, timAltAddresses);
 
-                var person = unitOfWork.Person.GetPersonWithContact(16);
-                var cities = unitOfWork.Address.GetAll();
-                var city = unitOfWork.Address.Get(44);
-                var altAddress = unitOfWork.AlternativeAddress.Get(14);
-                unitOfWork.Complete();
+                
+                //var person = unitOfWork.Person.GetPersonWithContact(16);
+                //var cities = unitOfWork.Address.GetAll();
+                //var city = unitOfWork.Address.Get(44);
+                //var altAddress = unitOfWork.AlternativeAddress.Get(14);
+                //unitOfWork.Complete();
             }
         }
     }
