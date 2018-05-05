@@ -56,7 +56,9 @@
     <Compile Include="Core\Repositories\IAddressRepository.cs" />
     <Compile Include="Core\Repositories\IAlternativeAddressRepository.cs" />
     <Compile Include="Core\Repositories\IContactRepository.cs" />
+    <Compile Include="Core\Repositories\IMainAddressRepository.cs" />
     <Compile Include="Core\Repositories\IPersonRepository.cs" />
+    <Compile Include="Core\Repositories\ITelephoneRepository.cs" />
     <Compile Include="Persistence\KartotekContext.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Core\Domain\Contact.cs" />
@@ -152,6 +154,7 @@
     <Compile Include="Persistence\Repositories\AddressRepository.cs" />
     <Compile Include="Persistence\Repositories\AlternativeAddressRepository.cs" />
     <Compile Include="Persistence\Repositories\ContactRepository.cs" />
+    <Compile Include="Persistence\Repositories\MainAdressRepository.cs" />
     <Compile Include="Persistence\Repositories\PersonRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />

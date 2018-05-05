@@ -11,5 +11,4 @@ namespace PersonKartotek.Core.Repositories
     {
         IEnumerable<Address> GetAddressesWithCity(int id);
     }
-    
 }

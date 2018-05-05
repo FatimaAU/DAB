@@ -10,7 +10,7 @@ namespace PersonKartotek.Core
         IAddressRepository Address { get; }
         IContactRepository Contact { get; }
         IPersonRepository Person { get; }
-        IRepository<MainAddress> MainAddress { get; }
+        IMainAddressRepository MainAddress { get; }
         int Complete();
     }
 }

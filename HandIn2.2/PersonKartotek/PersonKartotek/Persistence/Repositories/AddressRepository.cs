@@ -29,4 +29,25 @@ namespace PersonKartotek.Persistence.Repositories
             get { return Context as KartotekContext; }
         }
     }
+
+    class TelephoneRepository : Repository<Telephone>, ITelephoneRepository
+    {
+        public TelephoneRepository(KartotekContext context)
+            : base(context)
+        {
+        }
+
+        public IEnumerable<Telephone> GetTelephonesWithTelecompany(string telecompany)
+        {
+            return KartotekContext.Telephones
+                .Where(t => t.TeleCompany == telecompany)
+                .OrderBy(c => c.TeleCompany)
+                .ToList();
+        }
+
+        public KartotekContext KartotekContext
+        {
+            get { return Context as KartotekContext; }
+        }
+    }
 }

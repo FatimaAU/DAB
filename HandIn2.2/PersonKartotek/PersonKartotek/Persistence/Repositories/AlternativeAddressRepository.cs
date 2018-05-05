@@ -16,17 +16,12 @@ namespace PersonKartotek.Persistence.Repositories
         {
         }
 
-        public AlternativeAddress GetAlternativeAddressWithContacts(string id)
-        {
-            Contact con = KartotekContext.Contacts.Where(c => c.Email == id);
+        //AlternativeAddress GetAlternativeAddressWithContacts(int id);
+        //{
 
-            con.Email
-            var person = KartotekContext.Persons.Include(a => a.Contact.Email)
-                .SingleOrDefault(a => a.Contact.Email == id);
-
-            return KartotekContext.MainAddresses.Where(b => b.)
-            return KartotekContext.MainAddresses.Include(person.Contact.Email).SingleOrDefault(person.Contact.Email == id)
-        }
+        //    return new AlternativeAddress(new Address());
+        //    //return KartotekContext.S.FirstOrDefault(cc => cc.Contacts.Contains(con));
+        //}
 
         public KartotekContext KartotekContext
         {

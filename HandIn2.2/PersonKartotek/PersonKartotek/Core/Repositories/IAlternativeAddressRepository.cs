@@ -9,6 +9,6 @@ namespace PersonKartotek.Core.Repositories
 {
     public interface IAlternativeAddressRepository : IRepository<AlternativeAddress>
     {
-        AlternativeAddress GetAlternativeAddressWithContacts(int id);
+        //AlternativeAddress GetAlternativeAddressWithContacts(int id);
     }
 }

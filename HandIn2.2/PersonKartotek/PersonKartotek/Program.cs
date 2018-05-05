@@ -15,21 +15,51 @@ namespace PersonKartotek
         {
             using (var unitOfWork = new UnitOfWork(new KartotekContext()))
             {
-                var person = new Person();
 
-                person.Contact = new Contact();
-
-                var c = unitOfWork.Address.GetAddressesWithCity(44);
-                foreach (var address in c)
+                var person = new Person
                 {
-                    Console.WriteLine(address.StreetName);
-                }
+                    FirstName = "Hans",
+                    MiddleName = "Philip",
+                    LastName = "Sørensen",
+                    Contact =
+                    {
+                        MainAddress = unitOfWork.MainAddress.GetMainAddressWithPerson(16),
+                        Email = "hans_s@gmail.com",
+                        AlternativeAddresses = null,
+                        Telephones = new List<Telephone>()
+                    }
+                };
 
-                person.Contact.MainAddress = unitOfWork.MainAddress.Get(15);
+                var t = new Telephone
+                {
+                    Number = "33239320",
+                    TeleCompany = "CBB",
+                    Type = "Privat"
+                };
 
-                person.Contact.AlternativeAddresses = unitOfWork.AlternativeAddress.GetAlternativeAddressWithContacts("")
+                person.Contact.Telephones.Add(t);
 
-                Console.WriteLine(person.Contact.MainAddress.Address.StreetName);
+                //var mainad = unitOfWork.MainAddress.GetMainAddressWithPerson(17);
+
+                //Console.WriteLine(person.Contact);
+                //Console.WriteLine(person.Contact.MainAddress.Address.StreetName);
+
+                unitOfWork.Person.Add(person);
+
+                unitOfWork.Complete();
+                //Console.ReadLine();
+
+                //var c = unitOfWork.Address.GetAddressesWithCity(44);
+                //foreach (var address in c)
+                //{
+                //    Console.WriteLine(address.StreetName);
+                //}
+
+                // person.Contact.MainAddress = unitOfWork.MainAddress.Get(15);
+
+                //person.Contact.AlternativeAddresses = unitOfWork.AlternativeAddress.GetAlternativeAddressWithContacts("")
+
+                //Console.WriteLine(person.Contact.MainAddress.Address.StreetName);
                 //unitOfWork.Address.Find(b => b.)
                 //    EnvironmentVariableTa
                 //unitOfWork.Address.
@@ -75,7 +105,7 @@ namespace PersonKartotek
                 //Contact bobContact2 = new Contact("Bob2@hotmail.com", bobTelephones2, mainAddress2, bobAltAddresses2);
                 //Contact timContact = new Contact("Tim@Hotmail.com", timTelephones, mainAddress, timAltAddresses);
 
-                
+
                 //var person = unitOfWork.Person.GetPersonWithContact(16);
                 //var cities = unitOfWork.Address.GetAll();
                 //var city = unitOfWork.Address.Get(44);

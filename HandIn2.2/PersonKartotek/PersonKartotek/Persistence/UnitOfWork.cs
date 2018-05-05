@@ -21,14 +21,14 @@ namespace PersonKartotek.Persistence
             Address = new AddressRepository(_context);
             Contact = new ContactRepository(_context);
             Person = new PersonRepository(_context);
-            MainAddress = new Repository<MainAddress>(_context);
+            MainAddress = new MainAdressRepository(_context);
         }
 
         public IAlternativeAddressRepository AlternativeAddress { get; }
         public IAddressRepository Address { get; }
         public IContactRepository Contact { get; }
         public IPersonRepository Person { get; }
-        public IRepository<MainAddress> MainAddress { get; }
+        public IMainAddressRepository MainAddress { get; }
 
         public int Complete()
         {
