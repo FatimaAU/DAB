@@ -16,13 +16,6 @@ namespace PersonKartotek.Persistence.Repositories
         {
         }
 
-        //AlternativeAddress GetAlternativeAddressWithContacts(int id);
-        //{
-
-        //    return new AlternativeAddress(new Address());
-        //    //return KartotekContext.S.FirstOrDefault(cc => cc.Contacts.Contains(con));
-        //}
-
         public KartotekContext KartotekContext
         {
             get { return Context as KartotekContext; }

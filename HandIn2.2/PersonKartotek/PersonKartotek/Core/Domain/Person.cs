@@ -6,7 +6,7 @@ namespace PersonKartotek.Core.Domain
     {
         public Person()
         {
-            Contact = new Contact();
+            //Contact = new Contact();
         }
         
         [Key]

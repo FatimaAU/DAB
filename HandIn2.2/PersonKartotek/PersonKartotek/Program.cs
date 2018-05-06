@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,142 +14,130 @@ namespace PersonKartotek
     {
         static void Main(string[] args)
         {
+            List<Person> peopleToPrint = new List<Person>();
+
+            // Start with changing mainaddress
             using (var unitOfWork = new UnitOfWork(new KartotekContext()))
             {
+                var p = unitOfWork.Person.Get(19);
+                p.Contact.MainAddress = unitOfWork.MainAddress.Get(17);
+                unitOfWork.Complete();
+            }
 
-                //var person = new Person
-                //{
-                //    FirstName = "Hans",
-                //    MiddleName = "Philip",
-                //    LastName = "Sørensen",
-                //    Contact =
-                //    {
-                //        MainAddress = unitOfWork.MainAddress.GetMainAddressWithPerson(16),
-                //        Email = "hans_s@gmail.com",
-                //        AlternativeAddresses = null,
-                //        Telephones = new List<Telephone>()
-                //    }
-                //};
+            //Get and print a person
+            using (var unitOfWork = new UnitOfWork(new KartotekContext()))
+            {
+                Console.WriteLine("Get person with id 19 and print info:\n");
 
-                //var t = new Telephone
-                //{
-                //    Number = "33239320",
-                //    TeleCompany = "CBB",
-                //    Type = "Privat"
-                //};
+                peopleToPrint.Clear();
 
-                //person.Contact.Telephones.Add(t);
+                var p = unitOfWork.Person.Get(19);
 
-                //var mainad = unitOfWork.MainAddress.GetMainAddressWithPerson(17);
+                peopleToPrint.Add(p);
 
-                //Console.WriteLine(person.Contact);
-                //Console.WriteLine(person.Contact.MainAddress.Address.StreetName);
+                PrintPersonInfo(peopleToPrint);
 
-                //unitOfWork.Person.Add(person);
-                //unitOfWork.Person.Get(16);
-                //using (var db = new KartotekContext())
-                //{
+                Console.WriteLine("Press any key");
+                Console.ReadKey();
+            }
 
-                var ppl = unitOfWork.Address.GetAll();
+            //Get a person and update his main address
+            using (var unitOfWork = new UnitOfWork(new KartotekContext()))
+            {
+                Console.WriteLine("Get person with id 19 and changing his main address:\n");
+                var p = unitOfWork.Person.Get(19);
 
-                var p = unitOfWork.Person.Get(16);
+                p.Contact.MainAddress = unitOfWork.MainAddress.Get(18);
 
-                var h = unitOfWork.
+                unitOfWork.Complete();
+            }
 
-                unitOfWork.Person.
-                Console.WriteLine(p.Contact.Email);
-                    //var query = from p in db.Persons
-                    //    orderby p.FirstName
-                    //    select p;
+            // Print him again
+            using (var unitOfWork = new UnitOfWork(new KartotekContext()))
+            {
+                Console.WriteLine("Get person with id 19 and print info again:\n");
+                peopleToPrint.Clear();
 
-                    Console.WriteLine("All people in the database:\n");
-                    foreach (var item in ppl)
-                    {
-                        Console.WriteLine(item.City.CityName);
-                        //Console.WriteLine(item.FirstName + " " + item.MiddleName + " " + item.LastName + "\t " + item.Contact.Email +
-                        //                  "\nMainAddress: " + item.Contact.MainAddress.Address.StreetName + " " + item.Contact.MainAddress.Address.HouseNumber + "\n");
-                        //Console.WriteLine("Alternative addresses:");
-                        //foreach (var address in item.Contact.AlternativeAddresses)
-                        //{
-                        //    Console.WriteLine("\t" + address.Address.Type + ": " + address.Address.StreetName + " " + address.Address.HouseNumber);
-                        //}
-                        //Console.WriteLine("Telephones:");
-                        //foreach (var phone in item.Contact.Telephones)
-                        //{
-                        //    Console.WriteLine("\t" + phone.Type + ": " + phone.Number + " " + phone.TeleCompany);
-                        //}
-                        //Console.WriteLine("\n\n");
+                var p = unitOfWork.Person.Get(19);
 
-                    }
-                    Console.WriteLine("\n");
-                //}
+                peopleToPrint.Add(p);
 
+                PrintPersonInfo(peopleToPrint);
 
-                //unitOfWork.Complete();
-                //Console.ReadLine();
+                Console.WriteLine("Press any key");
+                Console.ReadKey();
+            }
 
-                //var c = unitOfWork.Address.GetAddressesWithCity(44);
-                //foreach (var address in c)
-                //{
-                //    Console.WriteLine(address.StreetName);
-                //}
+            // Get him again and change mainaddress
+            using (var unitOfWork = new UnitOfWork(new KartotekContext()))
+            {
+                Console.WriteLine("Get person with id 19 and change his address to match person with id 18\n");
+                var p = unitOfWork.Person.Get(19);
 
-                // person.Contact.MainAddress = unitOfWork.MainAddress.Get(15);
+                p.Contact.MainAddress = unitOfWork.MainAddress.GetMainAddressWithPerson(18);
 
-                //person.Contact.AlternativeAddresses = unitOfWork.AlternativeAddress.GetAlternativeAddressWithContacts("")
+                unitOfWork.Complete();
+            }
 
-                //Console.WriteLine(person.Contact.MainAddress.Address.StreetName);
-                //unitOfWork.Address.Find(b => b.)
-                //    EnvironmentVariableTa
-                //unitOfWork.Address.
-                //person.Contact.MainAddress = unitOfWork.Address.
-                //Telephone telephone1 = new Telephone("21351791", "Telia", "Private telephone");
-                //Telephone telephone2 = new Telephone("14113673", "Oister", "Work telephone");
-                //Telephone telephone3 = new Telephone("75431358", "3", "Mobile telephone");
-                //Telephone telephone4 = new Telephone("45455454", "Telia", "Private telephone");
-                //Telephone telephone5 = new Telephone("11112222", "Telia", "Private telephone");
-                //List<Telephone> bobTelephones = new List<Telephone>();
-                //List<Telephone> bobTelephones2 = new List<Telephone>();
-                //List<Telephone> timTelephones = new List<Telephone>();
-                //bobTelephones.Add(telephone1);
-                //bobTelephones.Add(telephone2);
-                //bobTelephones.Add(telephone3);
-                //timTelephones.Add(telephone4);
-                //bobTelephones2.Add(telephone5);
+            // Print him again
+            using (var unitOfWork = new UnitOfWork(new KartotekContext()))
+            {
+                Console.WriteLine("Get person with id 19 and print info once again:\n");
+                peopleToPrint.Clear();
 
-                //City aarhusV = new City("Aarhus V", "8210");
-                //City blacktown = new City("Blacktown", "CF3 7QG");
-                //City Kirkjubøur = new City("Kirkjubøur", "175");
-                //City BobTown = new City("BobTown", "13013");
-                //City Stockholm = new City("Stockholm", "11121");
-                //Address address1 = new Address("Kalendervej", 39, "Private Address", "Denmark", aarhusV);
-                //Address address2 = new Address("Southend Avenue", 70, "Work Address", "England", blacktown);
-                //Address address3 = new Address("Gamlivegur", 16, "Summer House", "Faroe Islands", Kirkjubøur);
-                //Address address4 = new Address("Bobstreet", 130, "Private Address", "Denmark", BobTown);
-                //Address address5 = new Address("Norrmalm", 49, "Summer House", "Sweden", Stockholm);
-                //MainAddress mainAddress = new MainAddress(address1);
-                //MainAddress mainAddress2 = new MainAddress(address4);
-                //AlternativeAddress altAddress1 = new AlternativeAddress(address2);
-                //AlternativeAddress altAddress2 = new AlternativeAddress(address3);
-                //AlternativeAddress altAddress3 = new AlternativeAddress(address5);
-                //List<AlternativeAddress> bobAltAddresses = new List<AlternativeAddress>();
-                //List<AlternativeAddress> bobAltAddresses2 = new List<AlternativeAddress>();
-                //List<AlternativeAddress> timAltAddresses = new List<AlternativeAddress>();
-                //bobAltAddresses.Add(altAddress1);
-                //bobAltAddresses.Add(altAddress2);
-                //bobAltAddresses2.Add(altAddress3);
-                //timAltAddresses.Add(altAddress2);
+                var p = unitOfWork.Person.Get(19);
 
-                //Contact bobContact = new Contact("Bob@hotmail.com", bobTelephones, mainAddress, bobAltAddresses);
-                //Contact bobContact2 = new Contact("Bob2@hotmail.com", bobTelephones2, mainAddress2, bobAltAddresses2);
-                //Contact timContact = new Contact("Tim@Hotmail.com", timTelephones, mainAddress, timAltAddresses);
+                peopleToPrint.Add(p);
 
+                PrintPersonInfo(peopleToPrint);
 
-                //var person = unitOfWork.Person.GetPersonWithContact(16);
-                //var cities = unitOfWork.Address.GetAll();
-                //var city = unitOfWork.Address.Get(44);
-                //var altAddress = unitOfWork.AlternativeAddress.Get(14);
-                //unitOfWork.Complete();
+                Console.WriteLine("Press any key");
+                Console.ReadKey();
+            }
+
+            using (var unitOfWork = new UnitOfWork(new KartotekContext()))
+            {
+                Console.WriteLine("PRINT ALL PEOPLE!!\n");
+                peopleToPrint.Clear();
+
+                var people = unitOfWork.Person.GetAll();
+                PrintPersonInfo(people);
+            }
+        }
+
+        static void PrintPersonInfo(IEnumerable<Person> p)
+        {
+            foreach (var person in p)
+            {
+                Console.WriteLine("Name: " + person.FirstName + " " + person.MiddleName + " " + person.LastName +
+                                    "\nEmail: " + person.Contact.Email +
+                                    "\nMainAddress: " + 
+                                    "\n\tStreetname: " + person.Contact.MainAddress.Address.StreetName +
+                                    "\n\tHousenumber: " + person.Contact.MainAddress.Address.HouseNumber +
+                                    "\n\tCity: " + person.Contact.MainAddress.Address.City.CityName +
+                                    "\n\tZipcode: " + person.Contact.MainAddress.Address.City.ZipCode +
+                                    "\n\tCountry: " + person.Contact.MainAddress.Address.Country);
+
+                Console.WriteLine("Alternative addresses:");
+                foreach (var address in person.Contact.AlternativeAddresses)
+                {
+                    Console.WriteLine("\t" + address.Address.Type + ": " +
+                                        "\n\t\tStreetname: " + address.Address.StreetName +
+                                        "\n\t\tHousenumber: " + address.Address.HouseNumber +
+                                        "\n\t\tCity: " + address.Address.City.CityName +
+                                        "\n\t\tZipcode: " + address.Address.City.ZipCode +
+                                        "\n\t\tCountry: " + address.Address.Country);
+                }
+
+                Console.WriteLine("Telephones:");
+                foreach (var phone in person.Contact.Telephones)
+                {
+                    Console.WriteLine("\t" + phone.Type + ": " +
+                                        "\n\t\tPhone number: " + phone.Number +
+                                        "\n\t\tTelecompany: " + phone.TeleCompany);
+                }
+
+                Console.WriteLine("\n\n");
             }
         }
     }
