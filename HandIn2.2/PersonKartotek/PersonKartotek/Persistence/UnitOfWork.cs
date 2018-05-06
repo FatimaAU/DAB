@@ -32,7 +32,15 @@ namespace PersonKartotek.Persistence
 
         public int Complete()
         {
-            return _context.SaveChanges();
+            try
+            {
+                return _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Dublicated Email --- Email has to be unique");
+                return 0;
+            }
         }
 
         public void Dispose()

@@ -58,7 +58,6 @@
     <Compile Include="Core\Repositories\IContactRepository.cs" />
     <Compile Include="Core\Repositories\IMainAddressRepository.cs" />
     <Compile Include="Core\Repositories\IPersonRepository.cs" />
-    <Compile Include="Core\Repositories\ITelephoneRepository.cs" />
     <Compile Include="Persistence\KartotekContext.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Core\Domain\Contact.cs" />

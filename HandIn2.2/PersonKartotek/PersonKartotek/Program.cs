@@ -44,7 +44,8 @@ namespace PersonKartotek
                 //Console.WriteLine(person.Contact);
                 //Console.WriteLine(person.Contact.MainAddress.Address.StreetName);
 
-                unitOfWork.Person.Add(person);
+                //unitOfWork.Person.Add(person);
+                unitOfWork.Person.Get()
 
                 unitOfWork.Complete();
                 //Console.ReadLine();
