@@ -38,7 +38,7 @@ namespace PersonKartotek.Persistence
             }
             catch (Exception e)
             {
-                Console.WriteLine("Dublicated Email --- Email has to be unique");
+                Console.WriteLine("Dublicated KEY Value -- Can't save changes");
                 return 0;
             }
         }

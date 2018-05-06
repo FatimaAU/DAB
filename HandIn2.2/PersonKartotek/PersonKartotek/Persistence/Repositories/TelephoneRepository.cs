@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Entity;
 using PersonKartotek.Core.Domain;
 using PersonKartotek.Core.Repositories;
 
 namespace PersonKartotek.Persistence.Repositories
 {
-    class AddressRepository : Repository<Address>, IAddressRepository
+    class TelephoneRepository : Repository<Telephone>, ITelephoneRepository
     {
-        public AddressRepository(KartotekContext context)
+        public TelephoneRepository(KartotekContext context)
             : base(context)
         {
         }
 
-        public IEnumerable<Address> GetAddressesWithCity(int id)
+        public IEnumerable<Telephone> GetTelephonesWithTelecompany(string telecompany)
         {
-            return KartotekContext.Addresses
-                .Where(c => c.City.CityId == id)
-                .OrderBy(c => c.AddressId)
+            return KartotekContext.Telephones
+                .Where(t => t.TeleCompany == telecompany)
+                .OrderBy(c => c.TeleCompany)
                 .ToList();
         }
 

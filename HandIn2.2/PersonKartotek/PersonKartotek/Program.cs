@@ -16,28 +16,28 @@ namespace PersonKartotek
             using (var unitOfWork = new UnitOfWork(new KartotekContext()))
             {
 
-                var person = new Person
-                {
-                    FirstName = "Hans",
-                    MiddleName = "Philip",
-                    LastName = "Sørensen",
-                    Contact =
-                    {
-                        MainAddress = unitOfWork.MainAddress.GetMainAddressWithPerson(16),
-                        Email = "hans_s@gmail.com",
-                        AlternativeAddresses = null,
-                        Telephones = new List<Telephone>()
-                    }
-                };
+                //var person = new Person
+                //{
+                //    FirstName = "Hans",
+                //    MiddleName = "Philip",
+                //    LastName = "Sørensen",
+                //    Contact =
+                //    {
+                //        MainAddress = unitOfWork.MainAddress.GetMainAddressWithPerson(16),
+                //        Email = "hans_s@gmail.com",
+                //        AlternativeAddresses = null,
+                //        Telephones = new List<Telephone>()
+                //    }
+                //};
 
-                var t = new Telephone
-                {
-                    Number = "33239320",
-                    TeleCompany = "CBB",
-                    Type = "Privat"
-                };
+                //var t = new Telephone
+                //{
+                //    Number = "33239320",
+                //    TeleCompany = "CBB",
+                //    Type = "Privat"
+                //};
 
-                person.Contact.Telephones.Add(t);
+                //person.Contact.Telephones.Add(t);
 
                 //var mainad = unitOfWork.MainAddress.GetMainAddressWithPerson(17);
 
@@ -45,9 +45,46 @@ namespace PersonKartotek
                 //Console.WriteLine(person.Contact.MainAddress.Address.StreetName);
 
                 //unitOfWork.Person.Add(person);
-                unitOfWork.Person.Get()
+                //unitOfWork.Person.Get(16);
+                //using (var db = new KartotekContext())
+                //{
 
-                unitOfWork.Complete();
+                var ppl = unitOfWork.Address.GetAll();
+
+                var p = unitOfWork.Person.Get(16);
+
+                var h = unitOfWork.
+
+                unitOfWork.Person.
+                Console.WriteLine(p.Contact.Email);
+                    //var query = from p in db.Persons
+                    //    orderby p.FirstName
+                    //    select p;
+
+                    Console.WriteLine("All people in the database:\n");
+                    foreach (var item in ppl)
+                    {
+                        Console.WriteLine(item.City.CityName);
+                        //Console.WriteLine(item.FirstName + " " + item.MiddleName + " " + item.LastName + "\t " + item.Contact.Email +
+                        //                  "\nMainAddress: " + item.Contact.MainAddress.Address.StreetName + " " + item.Contact.MainAddress.Address.HouseNumber + "\n");
+                        //Console.WriteLine("Alternative addresses:");
+                        //foreach (var address in item.Contact.AlternativeAddresses)
+                        //{
+                        //    Console.WriteLine("\t" + address.Address.Type + ": " + address.Address.StreetName + " " + address.Address.HouseNumber);
+                        //}
+                        //Console.WriteLine("Telephones:");
+                        //foreach (var phone in item.Contact.Telephones)
+                        //{
+                        //    Console.WriteLine("\t" + phone.Type + ": " + phone.Number + " " + phone.TeleCompany);
+                        //}
+                        //Console.WriteLine("\n\n");
+
+                    }
+                    Console.WriteLine("\n");
+                //}
+
+
+                //unitOfWork.Complete();
                 //Console.ReadLine();
 
                 //var c = unitOfWork.Address.GetAddressesWithCity(44);
